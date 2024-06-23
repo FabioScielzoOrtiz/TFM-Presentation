@@ -198,7 +198,7 @@ with $\omega \geq 2 \, | \lambda _{min} | $, with $\lambda _{min} $ being the sm
 ---
 
 $\\$
-Given a data matrix $\mathbf{X}=(X_1,...,X_p)$ of quantitative variables, a **robust Mahalanobis** (squared) distance between the pair of observations $ (\textbf{x}_i, \textbf{x}_r) $ can be defined as:
+Given a data matrix $\mathbf{X}=(X_1,...,X_p)$ of quantitative variables, a **robust Mahalanobis** (squared) distance between the pair of observations $(\textbf{x}_i, \textbf{x}_r)$ can be defined as:
 
 $$
   \delta^2(\textbf{x}_i,\textbf{x}_r)_{RMaha}  =   (\textbf{x}_i - \textbf{x}_r ) ^\prime \, \mathbf{S}^{-1}_R \, (\textbf{x}_i - \textbf{x}_r )
@@ -557,8 +557,7 @@ for $j=1,\dots, k_F$.
 4. Fast $k$-medoids is applied on $X_M$ leading to clusters $C_1^{\mathbf{X_M}}, \dots, C_k^{\mathbf{X_M}}$ made up by the previous medoids.
 5. Final clusters rule: the original observation $x_i$ is assigned to the step 4 cluster that contains the medoid of the 
 step 2 cluster to which $x_i$ belongs, and this for all $i=1,\ldots , n$. 
-   For all $i=1,\dots,n, j=1,\dots,k_F$ and $h,r=1,\dots,k$,
-   - If $\mathbf{x}_i\in C_h^{F_j}$, then,  $\mathbf{x}_i$ is assigned to $C_r^{\mathbf{X_M}}$ $\Leftrightarrow$ $\overline{\textbf{x}}_{h^{F_j}} \in C_r^{\mathbf{X_M}}$.
+   For all $i=1,\dots,n, j=1,\dots,k_F$ and $h,r=1,\dots,k$, if $\mathbf{x}_i\in C_h^{F_j}$, then,  $\mathbf{x}_i$ is assigned to $C_r^{\mathbf{X_M}}$ $\Leftrightarrow$ $\overline{\textbf{x}}_{h^{F_j}} \in C_r^{\mathbf{X_M}}$.
   
 <!---
 **Key parameters:**
