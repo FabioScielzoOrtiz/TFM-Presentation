@@ -531,32 +531,99 @@ Outliers were artificially introduced in some of the quantitative variables by m
   |     8       | 300k  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*=0.085, $X_2, X_3$: *prop_below*=0.1, 0.06) |
 
 ---
+
 <!-- header: 'Results of the simulations' -->
 
-Here a sample of simulation results will be shown.
+$\\[2.5cm]$
 
-### Simulation 3
-
- ![Photo by Joshua J. Cotten on Unsplash](/assets/kmedoids_simulation_3_comparison.jpg) 
-
-![Photo by Joshua J. Cotten on Unsplash](https://images.unsplash.com/photo-1601247387326-f8bcb5a234d4?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) 
+#### Simulation 3
+<div style="display: flex; align-items: flex-start; padding-left: 25px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_3_comparison.jpg" alt="Simulation 3" width="900" style="margin-right: 10px;" />
+    <div style="font-size: 16px; line-height: 2;">
+        <p><strong>Predictive Performance:</strong></p>
+        <ul>
+            <li>Fast <i>k</i>-medoids excels in accuracy and Rand Index.</li>
+            <li>Proposed algorithms outperform all other tested methods.</li>
+            <li>Significant accuracy difference: best proposed method (0.92) vs. others (0.70).</li>
+            <li>Top six algorithms use Generalized Gower with Robust Mahalanobis distance.</li>
+        </ul>
+        <p><strong>Computational Performance:</strong></p>
+        <ul>
+            <li>Most expensive within proposed method: 58.78 seconds.</li>
+            <li>Some algorithms (e.g., <i>k</i>-medoids, Diana) are not feasible.</li>
+            <li>Proposed methods are generally more expensive.</li>
+            <li>Best proposed method: 45.87 seconds.</li>
+        </ul>
+    </div>
+</div>
 
 ---
 
+$\\[2.5cm]$
+
+#### Simulation 4
+<div style="display: flex; align-items: flex-start; padding-left: 25px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_4_comparison.jpg" alt="Simulation 3" width="900" style="margin-right: 10px;" />
+    <div style="font-size: 16px; line-height: 2;">
+        <p>TO DO</p>
+    </div>
+</div>
+
 ---
 
+$\\[2.5cm]$
 
+#### Simulation 5
+<div style="display: flex; align-items: flex-start; padding-left: 25px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_5_comparison.jpg" alt="Simulation 3" width="900" style="margin-right: 10px;" />
+    <div style="font-size: 16px; line-height: 2;">
+        <p>TO DO</p>
+    </div>
+</div>
 
+---
+
+$\\[2.5cm]$
+
+#### Simulation 6
+<div style="display: flex; align-items: flex-start; padding-left: 25px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_6_comparison.jpg" alt="Simulation 3" width="900" style="margin-right: 10px;" />
+    <div style="font-size: 16px; line-height: 2;">
+        <p>TO DO</p>
+    </div>
+</div>
+
+---
+
+$\\[2.5cm]$
+
+#### Simulation 7
+<div style="display: flex; align-items: flex-start; padding-left: 25px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_7_comparison.jpg" alt="Simulation 3" width="900" style="margin-right: 10px;" />
+    <div style="font-size: 16px; line-height: 2;">
+        <p>TO DO</p>
+    </div>
+</div>
 
 ---
 <!-- header: 'Application to real data' -->
 
+The main aim was apply clustering for interpreting SHARE data using Fast $k$-medoids, incorporating sample weights. The first wave is clustered using quantitative $(\texttt{health}, \texttt{dependency}, \texttt{selfperceived}, \texttt{socio\_economic})$ and categorical $(\texttt{gender}, \texttt{agegroup}, \texttt{marriage})$ variables, with $k=2$ groups and Generalized Gower distance. The two groups are analyzed longitudinally across waves $(2015, 2017, 2020)$ using relevant SHARE variables to reveal trends over time.
+
+
+- **Cluster 0:** consists predominantly of older females, many of whom live alone and are from Southern Europe. This group exhibits worse dependency, self-perceived, and global indicators across all waves. They also show a worse socio-economic indicator in the first wave, with no significant differences in subsequent waves. However, they have better health status in the first and second waves, with no significant differences in the last wave.
+
+
+- **Cluster 1:** is characterized by younger males, many of whom are married and from Northern Europe. This cluster has better dependency, self-perceived, and global indicators throughout all waves. They also exhibit a better socio-economic indicator in the first wave, with no significant differences in later waves. Conversely, they have worse health status in the first and second waves, but there are no significant differences in the last wave.
 
 ---
 
-
----
-
+<div style="display: flex; align-items: flex-start; padding-left: 25px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/no_wave_variables.png" alt="Simulation 3" width="900" style="margin-right: 10px;" />
+    <div style="font-size: 16px; line-height: 2;">
+        <p>TO DO</p>
+    </div>
+</div>
 
 ---
 <!-- header: 'Developed Python packages' -->

@@ -180,7 +180,7 @@ table th td{
 
 th{
     background-color: var(--lighter-primary);
-    border: 0;
+    border: 2;
     border-bottom-width: 2px;
     border-top-width: 0;
 }
@@ -232,9 +232,9 @@ table > tr:last-of-type{
 /* Images */
 img {
     display: block;
-    max-width: 50%;
-    max-height: 80%;
-    margin: 1.5em 1em 1.5em 0;
+    max-width: 70%;
+    max-height: 70%;
+    margin: 0.3em 0em 5em 0;
 
     border-radius: var(--border-radius);
 
