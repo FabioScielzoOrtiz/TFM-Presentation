@@ -618,11 +618,18 @@ The main aim was apply clustering for interpreting SHARE data using Fast $k$-med
 
 ---
 
-<div style="display: flex; align-items: flex-start; padding-left: 25px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/no_wave_variables.png" alt="Simulation 3" width="900" style="margin-right: 10px;" />
-    <div style="font-size: 16px; line-height: 2;">
-        <p>TO DO</p>
-    </div>
+$\\[1.5cm]$
+
+<div style="display: flex; align-items: flex-start; padding-left: 55px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/no_wave_variables.png" alt="Simulation 3" width="900" style="margin-left: 120px;" />
+</div>
+
+---
+
+$\\[3.5cm]$
+
+<div style="display: flex; align-items: flex-start; padding-left: 100px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/clustering_interpretation_quant.jpg" alt="Simulation 3" width="750" style="margin-left: 160px;" />
 </div>
 
 ---

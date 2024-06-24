@@ -232,7 +232,7 @@ table > tr:last-of-type{
 /* Images */
 img {
     display: block;
-    max-width: 70%;
+    max-width: 80%;
     max-height: 70%;
     margin: 0.3em 0em 5em 0;
 
