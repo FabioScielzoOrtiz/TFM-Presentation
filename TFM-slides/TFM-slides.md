@@ -503,14 +503,15 @@ The key parameters of this algorithm are the ones already key in Fast $k$-Medoid
 <!-- header: 'Simulation scenarios to test the algorithms' -->
 
 
-Eight simulated datasets were generated using the *make_blobs* function from *scikit-learn*. This function creates isotropic Gaussian blobs for clustering, allowing control over the number of clusters, standard deviation, number of variables, and number of observations.
+Eight simulated datasets were generated using the *make_blobs* function from *scikit-learn*. This function creates isotropic Gaussian blobs for clustering, allowing control over the number of clusters, standard deviation of the clusters, number of variables, and number of observations.
 
 The advantage of these simulations is that they are specifically designed for clustering algorithms, with known real clusters, allowing performance to be measured in a similar way to supervised classification. This simulations served for robust testing and evaluation of clustering algorithms.
-
 
 Initially, all variables are quantitative, but some were converted to categorical for analysis.
 
 Outliers were artificially introduced in some of the quantitative variables by mean of  *outlier_contamination* function, which modified the data by injecting extreme values.
+
+---
 
 - Shared parameters of the simulations:
 
@@ -518,30 +519,29 @@ Outliers were artificially introduced in some of the quantitative variables by m
 
 - Particular parameters of the simulations:
 
-    | simulation  | *n_samples* | *centers* | *clusters_std* | *outlier_contaminations* |
-    |-------------|----------|----------|----------|----------|
-    |     1       |   35k    |   4      |  [2,2,2,3]   |  True  ($X_1$: *prop_below*=0.05, $X_2$: *prop_above*=0.05)  |
-    |     2       |    |    |    |    |
-    |     3       |   |    |    |    |
-    |     4       |   |    |    |    |
-    |     5      |   |    |    |    |
-    |     6       |   |    |    |    |
-    |     7       |   |    |    |    |
-    |     8       |   |    |    |    |
-
----
-
-
----
-
+  | simulation  | *n_samples* | *centers* | *clusters_std* | *outlier_contaminations* |
+  |:-------------:|:----------:|:----------:|:----------:|:----------:|
+  |     1       |   35k    |   4      |  [2,2,2,3]   |  True  ($X_1$: *prop_above*=0.05, $X_2$: *prop_below*=0.05)  |
+  |     2       | 35k  |  4  | [2,2,2,3]   |  False   |
+  |     3       | 100k  | 4   | [2,2,2,3]   |  True ($X_1$: *prop_above*=0.05, $X_2$: *prop_below*=0.05) |
+  |     4       | 300k  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*=0.05, $X_2$: *prop_below*=0.05)  |
+  |     5       | 600k  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*=0.05, $X_2$: *prop_below*=0.05) |
+  |     6       | 1M  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*=0.05, $X_2$: *prop_below*=0.05) |
+  |     7       | 300k  |  3  |  [2,2,3]  |  False  |
+  |     8       | 300k  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*=0.085, $X_2, X_3$: *prop_below*=0.1, 0.06) |
 
 ---
 <!-- header: 'Results of the simulations' -->
 
+Here a sample of simulation results will be shown.
 
+### Simulation 3
+
+ ![Photo by Joshua J. Cotten on Unsplash](/assets/kmedoids_simulation_3_comparison.jpg) 
+
+![Photo by Joshua J. Cotten on Unsplash](https://images.unsplash.com/photo-1601247387326-f8bcb5a234d4?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) 
 
 ---
-
 
 ---
 

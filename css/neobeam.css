@@ -28,7 +28,7 @@
      --highlight-color-two-background: #cc682daa;
      --highlight-color-three: #009d99;
      --highlight-color-three-background: #009d99aa;
-    --border-radius: 0.8rem;
+    --border-radius: 1rem;
 
     --default-font: "Roboto";
     --monospace-font: "Roboto Mono";
@@ -168,10 +168,10 @@ table {
 
     border-radius: var(--border-radius);
     border-style: solid;
-    border-width: .1em;
+    border-width: 0.05em;
     border-color: var(--text-color-negative-darker);
     
-    opacity: 0.9;
+    opacity: 1;
 }
 
 table th td{
@@ -233,8 +233,8 @@ table > tr:last-of-type{
 img {
     display: block;
     max-width: 50%;
-    max-height: 90%;
-    margin: .5em 1em .5em 0;
+    max-height: 80%;
+    margin: 1.5em 1em 1.5em 0;
 
     border-radius: var(--border-radius);
 
