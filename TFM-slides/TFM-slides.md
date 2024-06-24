@@ -438,81 +438,13 @@ Although in this work we have presented the transformation and the Delvin algori
 <!-- header: 'k-medoids algorithm
 ' -->
 
-Initially proposed in \cite{Kaufman1990}, $k$-medoids is a clustering algorithm that allows a data set to be partitioned into $k$ groups or clusters. The term medoids refers to an observation of a cluster whose average distance from the rest of the elements in the cluster is minimal. It corresponds to the most central point of the cluster, according to a distance metric. The medoids are considered the representative observations of the clusters.
+**$k$-medoids**
 
-Next, the version of the $k$-medoids algorithm proposed in \cite{park2009} will be presented.  
+The $k$-medoids algorithm, proposed by Kaufman (1990) and refined by Park et al. (2009), partitions a dataset into $k$ clusters, with each cluster represented by a medoid—the most central point according to a distance metric. The algorithm starts by defining the initial $k$ clusters based on a chosen distance metric and ordering observations by their calculated distances. Observations are assigned to the nearest medoid to form initial clusters.
 
----
+Next, the sum of intra-cluster variances is calculated to measure cluster similarity. Observations are iteratively reassigned to the closest clusters, and new medoids are recalculated. This iterative process continues until a stopping criterion is met, such as a stable sum of intra-cluster variances over several iterations, or until a maximum number of iterations is reached.
 
-1. Definition of the initial $k$ clusters.
-
-
-    - Given a value of $k\leq n$ and a distance metric $ \delta $ defined for each pair $\hspace{0.01cm}(\textbf{x} _i , \textbf{x}_r)\hspace{0.01cm}$ from observations of the variables $X_1, \dots , X_p$ $\Rightarrow \delta(\textbf{x}_i, \textbf{x}_r)   ,   \forall  i,r \in \lbrace 1,...,n \rbrace$ .
-        
-    - The following quantity is defined:
-    $$v_r   =   \sum _{i=1}^n   \dfrac{\delta(\textbf{x}_r , \textbf{x}_i )}{\sum _{h=1}^n \delta(\textbf{x}_h, \textbf{x}_i)}   =   \dfrac{\delta(\textbf{x}_r , \textbf{x}_1)}{\sum _{h=1}^n \delta(\textbf{x}_h, \textbf{x}_1)}+\dots +\dfrac{\delta(\textbf{x}_r , \textbf{x}_n)}{\sum _{h=1}^n \delta(\textbf{x}_h, \textbf{x}_n)} \hspace{0.15cm } ,   \forall   r \in \lbrace 1,...,n \rbrace$$
-
-
-    - The quantities are ordered from smallest to largest: $  v_{(1)} < v_{(2)} < \dots < v_{(n)}  $.
-
-
-    - The initial $k$ clusters will be denoted by $C_1,\dots , C_k$, and the medoid of the cluster $C_r$ is defined as the 
-    associated observation $v_{(r)}$, which is $\textbf{x }_{(r)}$, that is, the medoid of cluster $ C_r $ is $\overline{\textbf{x}}_{ C_r} = \textbf{x}_{(r)}$ , for $r\in \lbrace 1,\dots ,k \rbrace$ .
-        
-
-    - The initial $k$ clusters are obtained by assigning each observation $\hspace{0.01cm}\textbf{x}_1,\dots , \textbf{x}_n\hspace{0.01cm}$ to the medoid that is closest to it , depending on the distance $\delta$.
-
-        That is, $\textbf{x}_i$ is assigned to cluster $C_{r^{ *}}$, being $r^{ *} \hspace{0.01cm}=\hspace{0.01cm} arg   \underset{r \in \lbrace 1,\dots ,k \rbrace }{Min} \hspace{ 0.04cm} \delta(\textbf{x}_i , \overline{\textbf{x}}_{C_r})$.
-
----
-
-2. Calculation of the sum of intra-cluster variances.
-
-    - Given the distance measure $\delta$ , the sum of intra-cluster variances for the cluster configuration $C_1,\dots ,C_k $ is defined as follows: $V(C_1,...,C_k)  =\hspace{0.01cm} \sum _{r=1}^{k}   \sum _{i \in \mathcal {I}_r}   \delta^2(\textbf{x}_i , \overline{\textbf{x}}_{C_r})$, where $\mathcal{I}_r=\big\{   i\in \lbrace 1, \dots , n\rbrace   :   \mathbf{x} _{i} \in C_r  \bigr\}$ is the set of indices of the observations of the cluster $C_r  $.
-
-    - $\hspace{0.01cm}V(C_1,...,C_k)\hspace{0.01cm}$ is calculated, since it will be the metric based on which the selection criterion for the cluster configuration is defined optimal. It is a measure of how similar the observations contained in the same cluster are to each other. The smaller it is, the more similar they are, and vice versa.
-
-3. Re-assignment of observations to clusters: New cluster configuration. For each $i \in \lbrace 1,\dots , n \rbrace$:
-
-   - $\delta(\textbf{x}_i , \overline{\textbf{x}}_{C_r})$ is calculated.
-
-   - $\hspace{0.01cm}\textbf{x}_i\hspace{0.01cm}$ is reassigned to the closest cluster, that is, $\hspace{0.01cm}\textbf{x}_i\hspace {0.01cm}$ is reassigned to cluster $\hspace{0.01cm}C_{r^{ *}}$, where $r^{\hspace{0.03cm }*}  =  arg   \underset{r\in\lbrace1,\dots,k\rbrace}{Min}   \delta (\textbf{x}_i , \overline{\textbf{x}}_{C_r} )$.
-    Therefore, $\hspace{0.01cm}\textbf{x}_i\hspace{0.01cm}$ is reassigned to cluster $\hspace{0.01cm}C_{r^{ *}}\hspace {0.01cm}$, which could be the cluster it was already assigned to, or not.
-
-   - After reassigning all the observations $\hspace{0.01cm}\textbf{x}_1,\dots ,\textbf{x}_n\hspace{0.01cm}$ a new cluster configuration is obtained $\hspace{0.03cm }C_1^{1 },\dots ,C_k^{1 }$ , which will generally be different from the previous one, although not necessarily. Note that, the superscript $1$ indicates that this new configuration is the first one obtained after the initial definition of the clusters in the first step.
-
----
-
-4. Calculation of the medoids of the new clusters.
-
-    - For $r\in \lbrace 1,\dots , k \rbrace$, $\hspace{0.15cm}\overline{\textbf{x}}_{C_r^{ 1}}  =  \textbf{x}_{i^{*}}$,  where:
-        $$
-        i^{*} = arg \hspace{0.14cm} \underset{i \in \mathcal{I}_r^{ 1}}{Min} \hspace{0.18cm} \overline{\delta}(\textbf{x}_i, C_r^1)  =  arg \hspace{ 0.14cm} \underset{i \in \mathcal{I}_r^{ 1}}{Min}  \dfrac{1}{\# \mathcal{I}_r^ { 1}}\cdot \sum_{j\in \mathcal{I}_r^{ 1}} \hspace{0.07cm} \delta(\textbf{x}_i , \textbf{x}_j)
-        $$
-    
-      being $\mathcal{I}_r^{ 1}$ the set of indices of the observations of cluster $C_r^1$.
- 
-5. Calculation of the intra-cluster variance of the new clusters.
-
-    The sum of intra-cluster variances is calculated for the new cluster configuration obtained in the previous step: $V(C_1^{1 },...,C_k^{1 })$.
-
-
-6. Iteration of steps 3, 4 and 5.
-
-    Steps 3, 4 and 5 are iterated a number $\hspace{0.01cm}b\hspace{0.01cm}$ of times (max iterations), thus obtaining new $\hspace{0.01cm}b\hspace{0.01cm}$ cluster configurations, and with it $\hspace{0.01cm}b\hspace{0.01cm}$ values of the sum of intra-cluster variances.
- 
----
-
-7. Selection of the final cluster configuration.
-
-    - After the previous steps, a total of $ b+2 $ cluster configurations will be obtained $\Rightarrow b\hspace {0.03cm}$ in step 6, $1$ in step 1 and $1$ in step 3.
-
-    - The final cluster configuration is selected as the one that minimizes the sum of intra-cluster variances, among the $b+2$ obtained. That is, the cluster configuration $\hspace{0.01cm} C_1^{ h^*},\dots ,C_k^{ h^*}$ is selected, where $h^*  =  arg  \hspace{0.1cm} \underset{h}{Min} \hspace{0.13cm} V(C_1^{h},...., C_k^h)$, 
-    with $h \in \lbrace 1,\dots ,b+2\rbrace$.
-    
-After step 7 all the observation have been clustered, so that a vector indicating the clusters to which each observation belong can be build and it could be interpreted as the predictions of an underlying or hidden response variable:
-$$\widehat{y}_i = r  \Leftrightarrow  x_i \in C_r , \quad \forall i=1,\dots,n; r=1,\dots,k$$
-    
+The final cluster configuration is the one that minimizes locally the sum of intra-cluster variances, either when the stopping criterion is met or at the last iteration. This configuration provides a vector indicating the cluster membership of each observation, which can be interpreted as predictions of an underlying response variable.
 
 ---
 <!-- header: 'Presentation of Fast k-medoids and k-Fold Fast-k-medoids algorithms
@@ -526,10 +458,10 @@ out of sample observation to its nearest cluster, which means to the cluster wit
 The steps of the Fast $k$-medoids algorithm are the following:
 
   1. A random sample $\mathbf{X_S}$ of size $n_S$ of $\mathbf{X}$ is taken.
-    \item $k$-medoids is applied on  $\mathbf{X_S}$, therefore the sample observations are clustered leading to the sample clusters $C_1^S,\dots , C_k^S$.
-  2. The out of sample observations $\mathbf{X_{\overline{S}}}$ are assigned to its nearest cluster, that is, $x_i \in\mathbf{X_{\overline{S}}}$ is assigned to cluster $C_{r^*}^S$ 
+  2. $k$-medoids is applied on  $\mathbf{X_S}$, therefore the sample observations are clustered leading to the sample clusters $C_1^S,\dots , C_k^S$.
+  3. The out of sample observations $\mathbf{X_{\overline{S}}}$ are assigned to its nearest cluster, that is, $x_i \in\mathbf{X_{\overline{S}}}$ is assigned to cluster $C_{r^*}^S$ 
   where $r^* = arg  \underset{r\in\lbrace 1,\dots,k\rbrace}{Min}   \delta (\textbf{x}_i , \overline{\textbf{x}}_{C_r^S} )$, being  $\overline{\textbf{x}}_{C_r^S}$ the medoid of cluster $C_r^S$.
-  3. After all the observation have been clustered, a vector indicating the clusters to which each observation belong 
+  4. After all the observation have been clustered, a vector indicating the clusters to which each observation belong 
   can be build and interpreted as the predictions of an underlying or hidden response variable:
 $$\hat{y}_i = r  \Leftrightarrow  x_i \in C_r^S , \quad \forall i=1,\dots,n; r=1,\dots,k$$
 
@@ -570,6 +502,32 @@ The key parameters of this algorithm are the ones already key in Fast $k$-Medoid
 ---
 <!-- header: 'Simulation scenarios to test the algorithms' -->
 
+
+Eight simulated datasets were generated using the *make_blobs* function from *scikit-learn*. This function creates isotropic Gaussian blobs for clustering, allowing control over the number of clusters, standard deviation, number of variables, and number of observations.
+
+The advantage of these simulations is that they are specifically designed for clustering algorithms, with known real clusters, allowing performance to be measured in a similar way to supervised classification. This simulations served for robust testing and evaluation of clustering algorithms.
+
+
+Initially, all variables are quantitative, but some were converted to categorical for analysis.
+
+Outliers were artificially introduced in some of the quantitative variables by mean of  *outlier_contamination* function, which modified the data by injecting extreme values.
+
+- Shared parameters of the simulations:
+
+  - *n_features*: $8$ ; $\hspace{0.1cm}$ Quantitative: $X_1, X_2, X_3, X_4$; $\hspace{0.1cm}$ Binary: $X_5, X_6$; $\hspace{0.1cm}$ Multi-class: $X_7, X_8$
+
+- Particular parameters of the simulations:
+
+    | simulation  | *n_samples* | *centers* | *clusters_std* | *outlier_contaminations* |
+    |-------------|----------|----------|----------|----------|
+    |     1       |   35k    |   4      |  [2,2,2,3]   |  True  ($X_1$: *prop_below*=0.05, $X_2$: *prop_above*=0.05)  |
+    |     2       |    |    |    |    |
+    |     3       |   |    |    |    |
+    |     4       |   |    |    |    |
+    |     5      |   |    |    |    |
+    |     6       |   |    |    |    |
+    |     7       |   |    |    |    |
+    |     8       |   |    |    |    |
 
 ---
 
