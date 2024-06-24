@@ -4,18 +4,20 @@ theme: neobeam
 paginate: true
 math: katex
 footer: '**Fabio Scielzo Ortiz**
-         **Robust clustering for multivariate mixed data**
+         **Robust clustering in large multivariate mixed data**
          **10/07/24**'
 ---
 <!-- _class: title -->
-# Robust clustering for multivariate mixed data
+#  Robust clustering in large datasets of weighted multivariate heterogeneous data
 
 ## Fabio Scielzo Ortiz
 
 > ## Master in Big Data Analytics
 > Universidad Carlos III de Madrid
 
-### 10/07/24
+### Supervisor: Aurea Grané Chavéz
+
+### Madrid, 10/07/24
 
 ![logo GitHub Logo](../assets/logo_uc3m_2.png)
 
