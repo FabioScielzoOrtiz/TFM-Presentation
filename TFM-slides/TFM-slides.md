@@ -534,6 +534,11 @@ Outliers were artificially introduced in some of the quantitative variables by m
 
 <!-- header: 'Results of the simulations' -->
 
+TO INCLUDE:  showing that fast kmedoids is indeed much faster than kmedoids 
+
+
+---
+
 $\\[2.5cm]$
 
 #### Simulation 3
