@@ -521,21 +521,40 @@ Outliers were artificially introduced in some of the quantitative variables by m
 
   | simulation  | *n_samples* | *centers* | *clusters_std* | *outlier_contaminations* |
   |:-------------:|:----------:|:----------:|:----------:|:----------:|
-  |     1       |   35k    |   4      |  [2,2,2,3]   |  True  ($X_1$: *prop_above*=0.05, $X_2$: *prop_below*=0.05)  |
+  |     1       |   35k    |   4      |  [2,2,2,3]   |  True  ($X_1$: *prop_above*$=0.05$, $X_2$: *prop_below*$=0.05$)  |
   |     2       | 35k  |  4  | [2,2,2,3]   |  False   |
-  |     3       | 100k  | 4   | [2,2,2,3]   |  True ($X_1$: *prop_above*=0.05, $X_2$: *prop_below*=0.05) |
-  |     4       | 300k  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*=0.05, $X_2$: *prop_below*=0.05)  |
-  |     5       | 600k  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*=0.05, $X_2$: *prop_below*=0.05) |
-  |     6       | 1M  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*=0.05, $X_2$: *prop_below*=0.05) |
+  |     3       | 100k  | 4   | [2,2,2,3]   |  True ($X_1$: *prop_above*$=0.05$, $X_2$: *prop_below*=0.05) |
+  |     4       | 300k  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*$=0.05$, $X_2$: *prop_below*$=0.05$)  |
+  |     5       | 600k  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*$=0.05$, $X_2$: *prop_below*$=0.05$) |
+  |     6       | 1M  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*$=0.05$, $X_2$: *prop_below*$=0.05$) |
   |     7       | 300k  |  3  |  [2,2,3]  |  False  |
-  |     8       | 300k  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*=0.085, $X_2, X_3$: *prop_below*=0.1, 0.06) |
+  |     8       | 300k  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*$=0.085$, $X_2, X_3$: *prop_below*$=0.1, 0.06$) |
 
 ---
 
 <!-- header: 'Results of the simulations' -->
+#### Fast $k$-medoids vs $k$-medoids
 
-TO INCLUDE:  showing that fast kmedoids is indeed much faster than kmedoids 
 
+<div style="display: flex; align-items: flex-start; padding-left: 25px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_vs_fast_kmedoids.jpg" alt="Simulation 3" width="900" style="margin-right: 10px;" />
+    <div style="font-size: 16px; line-height: 2;">
+        <p><strong>Predictive Performance:</strong></p>
+        <ul>
+            <li>Fast <i>k</i>-medoids excels in accuracy and Rand Index.</li>
+            <li>Proposed algorithms outperform all other tested methods.</li>
+            <li>Significant accuracy difference: best proposed method (0.92) vs. others (0.70).</li>
+            <li>Top six algorithms use Generalized Gower with Robust Mahalanobis distance.</li>
+        </ul>
+        <p><strong>Computational Performance:</strong></p>
+        <ul>
+            <li>Most expensive within proposed method: 58.78 seconds.</li>
+            <li>Some algorithms (e.g., <i>k</i>-medoids, Diana) are not feasible.</li>
+            <li>Proposed methods are generally more expensive.</li>
+            <li>Best proposed method: 45.87 seconds.</li>
+        </ul>
+    </div>
+</div>
 
 ---
 
