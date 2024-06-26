@@ -531,44 +531,46 @@ Outliers were artificially introduced in some of the quantitative variables by m
   |     8       | 300k  | 3   |  [2,2,3]  |  True ($X_1$: *prop_above*$=0.085$, $X_2, X_3$: *prop_below*$=0.1, 0.06$) |
 
 ---
-
 <!-- header: 'Results of the simulations' -->
+$\\[0.3cm]$
 #### Fast $k$-medoids vs $k$-medoids
 
 
-<div style="display: flex; align-items: flex-start; padding-left: 25px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_vs_fast_kmedoids.jpg" alt="Simulation 3" width="900" style="margin-right: 10px;" />
-    <div style="font-size: 16px; line-height: 2;">
+<div style="display: flex; align-items: flex-start; padding-left: 20px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_vs_fast_kmedoids.jpg" alt="Simulation 3" width="770" style="margin-right: 5px;" />
+    <div style="font-size: 16px; line-height: 1.35; margin-right: 20px;">
         <p><strong>Predictive Performance:</strong></p>
         <ul>
-            <li>Fast <i>k</i>-medoids excels in accuracy and Rand Index.</li>
-            <li>Proposed algorithms outperform all other tested methods.</li>
-            <li>Significant accuracy difference: best proposed method (0.92) vs. others (0.70).</li>
-            <li>Top six algorithms use Generalized Gower with Robust Mahalanobis distance.</li>
+            <li>Fast <i>k</i>-medoids is much more accurate for all the sample sizes than <i>k</i>-medoids with Euclidean distance.</li>
+            <li>These big difference could be due to the distances  instead of the clustering algorithm.</li>
+            <li>The differences are much smaller when <i>k</i>-medoids uses Generalized Gower, although Fast <i>k</i>-medoids is still better for all the sample sizes, except for the smallest one.</li>
         </ul>
         <p><strong>Computational Performance:</strong></p>
         <ul>
-            <li>Most expensive within proposed method: 58.78 seconds.</li>
-            <li>Some algorithms (e.g., <i>k</i>-medoids, Diana) are not feasible.</li>
-            <li>Proposed methods are generally more expensive.</li>
-            <li>Best proposed method: 45.87 seconds.</li>
+            <li>Fast <i>k</i>-medoids is indeed much faster than <i>k</i>-medoids, even when it uses the Euclidean, which is one of the fastest distances.</li>
+            <li>When data becomes sufficiently large, applying <i>k</i>-medoids is in the best case not practical  because of the huge amount of time it requires to be run, and in the worst case not feasible due to memory errors.</li>
+        </ul>
+        <p><strong>Summing up:</strong></p>
+        <ul>
+            <li>Fast <i>k</i>-medoids is much faster an equally or even more accurate than <i>k</i>-medoids.</li>
         </ul>
     </div>
 </div>
 
 ---
 
-$\\[2.5cm]$
-
+$\\[3.2cm]$
 #### Simulation 3
-<div style="display: flex; align-items: flex-start; padding-left: 25px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_3_comparison.jpg" alt="Simulation 3" width="900" style="margin-right: 10px;" />
-    <div style="font-size: 16px; line-height: 2;">
+
+- *n=100k, k=4, outlier contamination.* 
+<div style="display: flex; align-items: flex-start; padding-left: 35px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_3_comparison.jpg" alt="Simulation 3" width="750" style="margin-right: 10px;" />
+    <div style="font-size: 16px; line-height: 1.6; margin-right: 25px;">
         <p><strong>Predictive Performance:</strong></p>
         <ul>
             <li>Fast <i>k</i>-medoids excels in accuracy and Rand Index.</li>
-            <li>Proposed algorithms outperform all other tested methods.</li>
-            <li>Significant accuracy difference: best proposed method (0.92) vs. others (0.70).</li>
+            <li>Proposed algorithms outperform significantly all other tested methods.</li>
+            <li>Big accuracy difference: best proposed method (0.92) vs. best others (0.70).</li>
             <li>Top six algorithms use Generalized Gower with Robust Mahalanobis distance.</li>
         </ul>
         <p><strong>Computational Performance:</strong></p>
@@ -583,56 +585,84 @@ $\\[2.5cm]$
 
 ---
 
-$\\[2.5cm]$
-
-#### Simulation 4
-<div style="display: flex; align-items: flex-start; padding-left: 25px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_4_comparison.jpg" alt="Simulation 3" width="900" style="margin-right: 10px;" />
-    <div style="font-size: 16px; line-height: 2;">
-        <p>TO DO</p>
-    </div>
+<div style="display: flex; align-items: flex-start; padding-left: 35px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/mds_plot_simulation_3.jpg" alt="Simulation 3" width="750" style="margin-right: 10px;" />
+    <div style="font-size: 16px; line-height: 1.6; margin-right: 25px;">
 </div>
 
 ---
 
-$\\[2.5cm]$
+$\\[1.6cm]$
 
 #### Simulation 5
-<div style="display: flex; align-items: flex-start; padding-left: 25px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_5_comparison.jpg" alt="Simulation 3" width="900" style="margin-right: 10px;" />
-    <div style="font-size: 16px; line-height: 2;">
-        <p>TO DO</p>
+- *n=600k, k=3, outlier contamination.* 
+<div style="display: flex; align-items: flex-start; padding-left: 35px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_5_comparison.jpg" alt="Simulation 3" width="750" style="margin-right: 5px;" />
+    <div style="font-size: 16px; line-height: 1.6; margin-right: 25px;">
+      <p><strong>Predictive Performance:</strong></p>
+      <ul>
+          <li>Fast <i>k</i>-medoids is the algorithm with the best performance.</li>
+          <li>All of our proposed clustering algorithms are better than all the other tested clustering methods, except MiniBatch <i>k</i>-means, which is the fourth best algorithm.</li>
+          <li>The difference between the accuracy of our best method (0.93) and the best of the others (0.916) is tiny, but with respect to the second (0.65) is much more significant.</li>
+      </ul>
+      <p><strong>Computational Performance:</strong></p>
+      <ul>
+          <li>The computationally most expensive method is one of our proposals and takes 238 seconds.</li>
+          <li>But the top five of our method take between 40 and 63 seconds.</li>
+          <li>There are algorithms that are directly not feasible.</li>
+          <li>Our proposed algorithms are, in general, more expensive than the other feasible methods tested.</li>
+      </ul>
     </div>
 </div>
 
 ---
 
-$\\[2.5cm]$
+$\\[1.5cm]$
 
 #### Simulation 6
-<div style="display: flex; align-items: flex-start; padding-left: 25px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_6_comparison.jpg" alt="Simulation 3" width="900" style="margin-right: 10px;" />
-    <div style="font-size: 16px; line-height: 2;">
-        <p>TO DO</p>
+- *n=1M, k=3, outlier contamination.* 
+<div style="display: flex; align-items: flex-start; padding-left: 35px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_6_comparison.jpg" alt="Simulation 3" width="750" style="margin-right: 10px;" />
+    <div style="font-size: 16px; line-height: 1.7; margin-right: 25px;">
+      <p><strong>Predictive Performance:</strong></p>
+      <ul>
+          <li>$k$-Folds Fast $k$-medoids is the algorithm with the best performance</li>
+          <li>All of our proposed clustering algorithms are better than all the other tested clustering methods, except MiniBatch $k$-means, which is the second best algorithm.</li>
+          <li>The difference between the accuracy of our best method (0.925) and the best of the others (0.918) is tiny, but with respect to the second (0.65), it is much more significant.</li>
+      </ul>
+      <p><strong>Computational Performance:</strong></p>
+      <ul>
+          <li>The computationally most expensive method is one of our proposals and takes 356 seconds to be executed.</li>
+          <li>But our two best methods take less than 84 seconds.</li>
+          <li>There are algorithms that are directly not feasible.</li>
+          <li>Our proposed algorithms are, in general, more expensive than the other feasible methods tested.</li>
+      </ul>
     </div>
 </div>
 
+
 ---
 
-$\\[2.5cm]$
+$\\[3.2cm]$
 
 #### Simulation 7
-<div style="display: flex; align-items: flex-start; padding-left: 25px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_7_comparison.jpg" alt="Simulation 3" width="900" style="margin-right: 10px;" />
-    <div style="font-size: 16px; line-height: 2;">
+- *n=300k, k=3, without outlier contamination.* 
+<div style="display: flex; align-items: flex-start; padding-left: 35px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_7_comparison.jpg" alt="Simulation 3" width="750" style="margin-right: 10px;" />
+    <div style="font-size: 16px; line-height: 2; margin-right: 25px;">
         <p>TO DO</p>
     </div>
 </div>
 
 ---
 <!-- header: 'Application to real data' -->
+$\\$
+The main aim was apply clustering for interpreting SHARE data using Fast $k$-medoids, incorporating sample weights. 
 
-The main aim was apply clustering for interpreting SHARE data using Fast $k$-medoids, incorporating sample weights. The first wave is clustered using quantitative $(\texttt{health}, \texttt{dependency}, \texttt{selfperceived}, \texttt{socio\_economic})$ and categorical $(\texttt{gender}, \texttt{agegroup}, \texttt{marriage})$ variables, with $k=2$ groups and Generalized Gower distance. The two groups are analyzed longitudinally across waves $(2015, 2017, 2020)$ using relevant SHARE variables to reveal trends over time.
+SHARE stands for urvey of Health, Ageing and Retirement in Europe (SHARE), which is the largest
+cross-European social science panel study dataset covering insights into European individuals’ public health and socioeconomic living conditions.
+
+The first wave is clustered using quantitative $(\texttt{health}, \texttt{dependency}, \texttt{selfperceived}, \texttt{socio\_economic})$ and categorical $(\texttt{gender}, \texttt{agegroup}, \texttt{marriage})$ variables, with $k=2$ groups and Generalized Gower distance. The two groups are analyzed longitudinally across waves $(2015, 2017, 2020)$ using relevant SHARE variables to reveal trends over time.
 
 
 - **Cluster 0:** consists predominantly of older females, many of whom live alone and are from Southern Europe. This group exhibits worse dependency, self-perceived, and global indicators across all waves. They also show a worse socio-economic indicator in the first wave, with no significant differences in subsequent waves. However, they have better health status in the first and second waves, with no significant differences in the last wave.
