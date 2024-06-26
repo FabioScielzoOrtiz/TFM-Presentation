@@ -588,10 +588,13 @@ $\\[3.2cm]$
 <div style="display: flex; align-items: flex-start; padding-left: 35px;">
     <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/mds_plot_simulation_3.jpg" alt="Simulation 3" width="750" style="margin-right: 10px;" />
     <div style="font-size: 16px; line-height: 1.6; margin-right: 25px;">
+        <p>TO DO</p>
+    </div>
 </div>
 
 ---
 
+<!---
 $\\[1.6cm]$
 
 #### Simulation 5
@@ -615,7 +618,7 @@ $\\[1.6cm]$
     </div>
 </div>
 
----
+--->
 
 $\\[1.5cm]$
 
