@@ -99,7 +99,7 @@ Following to *Grané (2021b)*, **Generalized Gower** distance (G-Gower) is defin
 1. Consider the data matrix partitioned in three sub-matrices $\mathbf{X}=[\mathbf{X}_Q\; \mathbf{X}_B \; \mathbf{X}_{M}]$, each of which corresponds
  to a variable type.
 
-2. For each sub-matrix $\mathbf{X}_h$, $h=Q,B,M$, a distance matrix is calculated, using a proper distance function for each variable type:  $\hspace{0.1cm}\mathbf{D}_h = \left(  \delta_h(\mathbf{x}_i^h,\mathbf{x}_r^h) \right) _{  \{1\leq i,r\leq n\}}.$
+2. For each sub-matrix $\mathbf{X}_h$, $h=Q,B,M$, a distance matrix is calculated, using a proper distance function for each variable type:  $\hspace{0.15cm}\mathbf{D}_h = \left(  \delta_h(\mathbf{x}_i^h,\mathbf{x}_r^h) \right) _{  \{1\leq i,r\leq n\}}.$
 
 3. For each $\mathbf{D}_h$, its geometric variability is calculated:
 $$
@@ -108,12 +108,12 @@ $$
 
 4. The corresponding sub-matrices of squared distances $\mathbf{D}_h^{(2)}$ are standardized to geometric variability one:
 $$
-\mathbf{D}_h^{(2)'} = \frac{1}{VG_h} \, \mathbf{D}_h ^{(2)}.
+\mathbf{D}_h^{(2)\prime} = \frac{1}{VG_h} \, \mathbf{D}_h ^{(2)}.
 $$
 
 5. Finally, the standardized sub-matrices of squared distances are combined to obtain **Generalized Gower's** distance:
 $$
-\mathbf{D}_{GG}^{(2)} = \mathbf{D}_Q^{(2)'} + \mathbf{D}_B^{(2)'} + \mathbf{D}_M^{(2)'}.
+\mathbf{D}_{GG}^{(2)} = \mathbf{D}_Q^{(2)\prime} + \mathbf{D}_B^{(2)\prime} + \mathbf{D}_M^{(2)\prime}.
 $$
 
 <!---
@@ -135,9 +135,9 @@ Assuming four first steps of the G-Gower distance are already followed, the RelM
 
 1. For each sub-matrix of squared distances the Gram matrix is computed: 
 $$
-\mathbf{G}_h = -\frac{1}{2}\,\mathbf{H}\, \mathbf{D} _h^{(2)'}\, \mathbf{H},
+\mathbf{G}_h = -\frac{1}{2}\,\mathbf{H}\, \mathbf{D} _h^{(2)\prime}\, \mathbf{H},
 $$
-where $\mathbf{H}= \mathbf{I} - \frac{1}{n}\, \mathbf{1}\, \mathbf{1}^\prime$ is the centering matrix, $\mathbf{I}$ is the identity matrix of size $n$ and $\mathbf{1}$ is a $n\times 1$ vector of ones. 
+where $\mathbf{H}= \mathbf{I} - \frac{1}{n}\, \mathbf{1}\, \mathbf{1}^t$ is the centering matrix, $\mathbf{I}$ is the identity matrix of size $n$ and $\mathbf{1}$ is a $n\times 1$ vector of ones. 
 
 2. The Gram matrix of the joint metric is calculated by combining matrices $\mathbf{G}_h$,  for $h=Q,B,M$:
 $$
@@ -145,7 +145,7 @@ $$
 $$
 3. Finally, the joint metric is obtained as follows:
     $$
-    \mathbf{D}^{(2)}_{RelMS} = \mathbf{g} \, \mathbf{1}^\prime + \mathbf{1 }\, \mathbf{g}^\prime - 2\, \mathbf{G},
+    \mathbf{D}^{(2)}_{RelMS} = \mathbf{g} \, \mathbf{1}^t + \mathbf{1 }\, \mathbf{g}^t - 2\, \mathbf{G},
     $$
    where $\mathbf{g}=\text{diag}(\mathbf{G})$ is a $n\times 1$ vector containing the diagonal elements of $\mathbf{G}$.
 
@@ -203,7 +203,7 @@ $\\$
 Given a data matrix $\mathbf{X}=(X_1,...,X_p)$ of quantitative variables, a **robust Mahalanobis** (squared) distance between the pair of observations $(\textbf{x}_i, \textbf{x}_r)$ can be defined as:
 
 $$
-  \delta^2(\textbf{x}_i,\textbf{x}_r)_{RMaha}  =   (\textbf{x}_i - \textbf{x}_r ) ^\prime \, \mathbf{S}^{-1}_R \, (\textbf{x}_i - \textbf{x}_r )
+  \delta^2(\textbf{x}_i,\textbf{x}_r)_{RMaha}  =   (\textbf{x}_i - \textbf{x}_r )^t \, \mathbf{S}^{-1}_R \, (\textbf{x}_i - \textbf{x}_r )
 $$
 
 where $\mathbf{S}_R$ is a robust estimation of the covariance matrix of $\mathbf{X}$.
@@ -501,7 +501,7 @@ The steps of the $k$-Fold Fast $k$-medoids algorithm are the following:
 2. Fast $k$-medoids is applied on each fold $\mathbf{X}_{F_j}$, leading to the clusters $C_1^{F_j},\dots, C_k^{F_j}$, and to the medoids $\overline{\mathbf{x}}_{1^{F_j}}, \dots, \overline{\mathbf{x}}_{k^{F_j}}$, 
 for $j=1,\dots, q$.
 3. A new data matrix is build concatenating the medoids of each fold by rows: $\mathbf{X_M}$
-4. Fast $k$-medoids is applied on $X_M$ leading to clusters $C_1^{\mathbf{X_M}}, \dots, C_k^{\mathbf{X_M}}$ made up by the previous medoids.
+4. Fast $k$-medoids is applied on $\mathbf{X_M}$ leading to clusters $C_1^{\mathbf{X_M}}, \dots, C_k^{\mathbf{X_M}}$ made up by the previous medoids.
 5. Final clusters rule: the original observation $x_i$ is assigned to the step 4 cluster that contains the medoid of the 
 step 2 cluster to which $x_i$ belongs, and this for all $i=1,\ldots , n$. 
    For all $i=1,\dots,n, j=1,\dots,q$ and $h,r=1,\dots,k$, if $\mathbf{x}_i\in C_h^{F_j}$, then,  $\mathbf{x}_i$ is assigned to $C_r^{\mathbf{X_M}}$ iff  $\hspace{0.1cm}\overline{\mathbf{x}}_{h^{F_j}} \in C_r^{\mathbf{X_M}}$.
