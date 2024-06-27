@@ -472,6 +472,12 @@ The steps of the Fast $k$-medoids algorithm are the following:
   4. After all the observation have been clustered, a vector indicating the clusters to which each observation belong 
   is provided.
 
+---
+
+$\\[4cm]$
+<div style="display: flex; align-items: flex-start; padding-left: 400px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/fast_kmedoids_diagram.jpg" alt="Simulation 3" width="500" style="margin-right: 45px;" />
+</div>
 
 <!---
 **Key parameters**
@@ -502,12 +508,11 @@ step 2 cluster to which $x_i$ belongs, and this for all $i=1,\ldots , n$.
   
 
 ---
-
-<div style="display: flex; align-items: flex-start; padding-left: 20px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kfold_fast_kmedoids_diagram.jpg" alt="Simulation 3" width="770" style="margin-right: 5px;" />
-    <div style="font-size: 16px; line-height: 1.35; margin-right: 20px;">
-    </div>
+$\\[4.3cm]$
+<div style="display: flex; align-items: flex-start; padding-left: 450px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kfold_fast_kmedoids_diagram.jpg" alt="Simulation 3" width="330" style="margin-right: 45px;" />
 </div>
+
 
 <!---
 **Key parameters:**
