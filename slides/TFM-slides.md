@@ -711,20 +711,28 @@ $\\[3.5cm]$
 ---
 <!-- header: 'Developed Python packages' -->
 
-These Master's thesis has led to the development of the following Python packages.
+  These Master's thesis has led to the development of the following Python packages.
 
 
-- **PyDistances**: a package for computing classic statistical distances as well as the
-new proposals, suitable for mixed multivariate data, even with outliers.
+  - **PyDistances**: a package for computing classic statistical distances as well as the  new proposals, 
+  suitable for mixed multivariate data, even with outliers.
 
-- **FastKmedoids**: a package to apply the proposed clustering algorithms Fast k-
-medoids and k-Fold Fast k-medoids.
+  - **FastKmedoids**: a package to apply the proposed clustering algorithms Fast $k$- medoids and
+   $k$-Fold Fast $k$-medoids.
 
-- **SupervisedClustering**: a package to apply clustering methods in regression and
-classification problems
+  - **SupervisedClustering**: a package to apply clustering methods in regression and classification problems
+
+
+```python
+pip install PyDistances  
+
+pip install FastKmedoids
+
+pip install SupervisedClustering
+```
 
 ---
-# PyDistances
+### PyDistances
 
 ```python
 G_Gower = GG_dist_matrix(p1=5, p2=4, p3=2, d1='robust_mahalanobis', d2='jaccard', d3='matching', 
@@ -750,7 +758,9 @@ array([[0.        , 2.19522219, 1.88018652, ..., 1.96158612, 3.03894716,
 ```
 
 ---
-# FastKmedodis
+
+$\\$
+### FastKmedodis
 
 
 ```python
@@ -758,14 +768,13 @@ fast_kmedoids = FastKmedoidsGG(n_clusters=3, method='pam', init='heuristic', max
                                 frac_sample_size=0.01, p1=5, p2=4, p3=2, 
                                 d1='robust_mahalanobis', d2='jaccard', d3='matching', 
                                 robust_maha_method='trimmed', alpha=0.05, epsilon=0.05, n_iters=20)
+
 fast_kmedoids.fit(X=madrid_houses_df) 
 
 fast_kmedoids.labels
 ```
+> $\small\texttt{array([2, 1, 1, ..., 0, 0, 0])}$
 
-```
-array([2, 1, 1, ..., 0, 0, 0], dtype=int64)
-```
 
 ```python
 kfold_fast_kmedoids = KFoldFastKmedoidsGG(n_clusters=3, method='pam', init='heuristic', max_iter=100, random_state=123,
@@ -779,13 +788,12 @@ kfold_fast_kmedoids.fit(X=madrid_houses_df)
 kfold_fast_kmedoids.labels
 ```
 
-```
-array([0, 1, 1, ..., 1, 1, 1])
-```
+> $\small\texttt{array([0, 1, 1, ..., 1, 1, 1])}$
+
 
 
 ---
-# SupervisedClustering
+### SupervisedClustering
 
 ```
 meta_models = {'XGB': XGBRegressor(random_state=123),
@@ -806,11 +814,10 @@ fast_kmedoids_estimator = FastKmedoidsEstimator(estimators=estimators_RF_XGB,
                                                 y_type='quantitative')
 
 fast_kmedoids_estimator.fit(X=X, y=Y)
+
 Y_test_hat = fast_kmedoids_estimator.predict(X=X_test)
 
 mean_absolute_error(y_pred=Y_test_hat, y_true=Y_test)
 ```
 
-```
-188007.61
-```
+>$\small\texttt{188007.61}$

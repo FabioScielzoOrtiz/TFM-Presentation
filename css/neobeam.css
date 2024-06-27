@@ -145,12 +145,12 @@ pre {
     margin-left: 1rem;
     padding: 1em;
     min-width: 20%;
-    max-width: 70%;
+    max-width: 90%;
     min-height: 10%;
-    max-height: 40%; overflow: hidden; /* To avoid it squeezing out the slide */
+    max-height: 50%; overflow: hidden; /* To avoid it squeezing out the slide */
 
-    font-size: 0.75em;
-    opacity: 0.9;
+    font-size: 0.8em;
+    opacity: 0.95;
 }
 
 .katex {
