@@ -147,7 +147,7 @@ pre {
     min-width: 20%;
     max-width: 90%;
     min-height: 10%;
-    max-height: 50%; overflow: hidden; /* To avoid it squeezing out the slide */
+    max-height: 70%; overflow: hidden; /* To avoid it squeezing out the slide */
 
     font-size: 0.8em;
     opacity: 0.95;

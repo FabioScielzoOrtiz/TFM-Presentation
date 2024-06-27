@@ -580,7 +580,7 @@ $\\[0.3cm]$
 
 ---
 
-$\\[3.2cm]$
+$\\[2.5cm]$
 #### Simulation 3
 
 - *n=100k, k=4, outlier contamination.* 
@@ -606,7 +606,7 @@ $\\[3.2cm]$
 
 ---
 
-$\\[1cm]$
+$\\[2cm]$
 #### Simulation 3
 <div style="display: flex; align-items: flex-start; padding-left: 35px;">
     <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/mds_plot_simulation_3.jpg" alt="Simulation 3" width="800" style="margin-right: 1px;" />
@@ -647,7 +647,7 @@ $\\[1.6cm]$
 
 --->
 
-$\\[1.5cm]$
+$\\[2cm]$
 
 #### Simulation 6
 - *n=1M, k=3, outlier contamination.* 
@@ -672,7 +672,7 @@ $\\[1.5cm]$
 
 ---
 
-$\\[1.7cm]$
+$\\[2cm]$
 
 #### Simulation 7
 - *n=300k, k=3, without outlier contamination.* 
@@ -814,6 +814,7 @@ kfold_fast_kmedoids.labels
 
 
 ---
+$\\$
 ### SupervisedClustering
 
 ```
