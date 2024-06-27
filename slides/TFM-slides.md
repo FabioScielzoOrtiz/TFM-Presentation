@@ -585,10 +585,16 @@ $\\[3.2cm]$
 
 ---
 
+$\\[1cm]$
+#### Simulation 3
 <div style="display: flex; align-items: flex-start; padding-left: 35px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/mds_plot_simulation_3.jpg" alt="Simulation 3" width="750" style="margin-right: 10px;" />
-    <div style="font-size: 16px; line-height: 1.6; margin-right: 25px;">
-        <p>TO DO</p>
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/mds_plot_simulation_3.jpg" alt="Simulation 3" width="800" style="margin-right: 1px;" />
+    <div style="font-size: 16px; line-height: 1.8; margin-right: 25px;">
+    <p><strong>Insights:</strong></p>
+        <ul>
+            <li>Our best methods are able to classified over the 92% of the instances correctly, even the outliers.</li>
+            <li>The other methods fail classifying the outliers, identifying them as a separate group, as in the case of MiniBatch <i>k</i>-means, or grouping them in two clusters, as in the case of <i>k</i>-means and GMM. This pushes them into a poor performance.</li>
+        </ul>
     </div>
 </div>
 
@@ -629,7 +635,7 @@ $\\[1.5cm]$
     <div style="font-size: 16px; line-height: 1.7; margin-right: 25px;">
       <p><strong>Predictive Performance:</strong></p>
       <ul>
-          <li>$k$-Folds Fast $k$-medoids is the algorithm with the best performance</li>
+          <li><i>k</i>-Folds Fast <i>k</i>-medoids is the algorithm with the best performance</li>
           <li>All of our proposed clustering algorithms are better than all the other tested clustering methods, except MiniBatch $k$-means, which is the second best algorithm.</li>
           <li>The difference between the accuracy of our best method (0.925) and the best of the others (0.918) is tiny, but with respect to the second (0.65), it is much more significant.</li>
       </ul>
@@ -643,19 +649,32 @@ $\\[1.5cm]$
     </div>
 </div>
 
-
 ---
 
-$\\[3.2cm]$
+$\\[1.7cm]$
 
 #### Simulation 7
 - *n=300k, k=3, without outlier contamination.* 
 <div style="display: flex; align-items: flex-start; padding-left: 35px;">
     <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_7_comparison.jpg" alt="Simulation 3" width="750" style="margin-right: 10px;" />
-    <div style="font-size: 16px; line-height: 2; margin-right: 25px;">
-        <p>TO DO</p>
+    <div style="font-size: 16px; line-height: 1.5; margin-right: 25px;">
+      <p><strong>Predictive Performance:</strong></p>
+      <ul>
+          <li>LDA <i>k</i>-means is the algorithm with the best performance.</li>
+          <li> Our proposed methods have a worse performance than most part of the feasible others. This is due to the fact that there is non contamination with outlier in this simulation, and in that condition standard clustering algorithms are more suitable to cluster the generated data.</li>
+          <li>The difference between the accuracy of the best method (0.996), that does not belong to our proposals, and the  best of our (0.943), is not too big. This means that our methods are still performing well even though they are no longer the best.</li>
+      </ul>
+      <p><strong>Computational Performance:</strong></p>
+      <ul>
+          <li>The computationally most expensive method is one of our proposals and takes 128 seconds to be executed.</li>
+          <li>But our top five best methods take 22 second in average.</li>
+          <li>There are algorithms that are directly not feasible.</li>
+          <li>Our proposed algorithms are, in general, more expensive than the other feasible methods tested.</li>
+      </ul>
     </div>
 </div>
+
+
 
 ---
 <!-- header: 'Application to real data' -->
@@ -692,16 +711,106 @@ $\\[3.5cm]$
 ---
 <!-- header: 'Developed Python packages' -->
 
+These Master's thesis has led to the development of the following Python packages.
+
+
+- **PyDistances**: a package for computing classic statistical distances as well as the
+new proposals, suitable for mixed multivariate data, even with outliers.
+
+- **FastKmedoids**: a package to apply the proposed clustering algorithms Fast k-
+medoids and k-Fold Fast k-medoids.
+
+- **SupervisedClustering**: a package to apply clustering methods in regression and
+classification problems
 
 ---
+# PyDistances
 
+```python
+G_Gower = GG_dist_matrix(p1=5, p2=4, p3=2, d1='robust_mahalanobis', d2='jaccard', d3='matching', 
+                         method='trimmed', alpha=0.05, epsilon=0.05, n_iters=20, fast_VG=False, 
+                         weights=w)
+
+G_Gower.compute(X=madrid_houses_df)
+```
+```
+array([[0.        , 2.19522219, 1.88018652, ..., 1.96158612, 3.03894716,
+        2.23162851],
+       [2.19522219, 0.        , 1.01470463, ..., 2.43908123, 2.57176396,
+        1.940635  ],
+       [1.88018652, 1.01470463, 0.        , ..., 2.28839255, 2.37552921,
+        1.6091117 ],
+       ...,
+       [1.96158612, 2.43908123, 2.28839255, ..., 0.        , 2.84937993,
+        1.67755672],
+       [3.03894716, 2.57176396, 2.37552921, ..., 2.84937993, 0.        ,
+        2.93702838],
+       [2.23162851, 1.940635  , 1.6091117 , ..., 1.67755672, 2.93702838,
+        0.        ]])
+```
+
+---
+# FastKmedodis
+
+
+```python
+fast_kmedoids = FastKmedoidsGG(n_clusters=3, method='pam', init='heuristic', max_iter=100, random_state=123,
+                                frac_sample_size=0.01, p1=5, p2=4, p3=2, 
+                                d1='robust_mahalanobis', d2='jaccard', d3='matching', 
+                                robust_maha_method='trimmed', alpha=0.05, epsilon=0.05, n_iters=20)
+fast_kmedoids.fit(X=madrid_houses_df) 
+
+fast_kmedoids.labels
+```
+
+```
+array([2, 1, 1, ..., 0, 0, 0], dtype=int64)
+```
+
+```python
+kfold_fast_kmedoids = KFoldFastKmedoidsGG(n_clusters=3, method='pam', init='heuristic', max_iter=100, random_state=123,
+                                          frac_sample_size=0.1, n_splits=10, shuffle=True, kfold_random_state=123,
+                                          p1=5, p2=4, p3=2, d1='robust_mahalanobis', d2='jaccard', d3='matching', 
+                                          robust_maha_method='trimmed', alpha=0.05, epsilon=0.05, n_iters=20,
+                                          fast_VG=False, VG_sample_size=1000, VG_n_samples=5)
+
+kfold_fast_kmedoids.fit(X=madrid_houses_df) 
+
+kfold_fast_kmedoids.labels
+```
+
+```
+array([0, 1, 1, ..., 1, 1, 1])
+```
 
 
 ---
+# SupervisedClustering
 
+```
+meta_models = {'XGB': XGBRegressor(random_state=123),
+               'RF': RandomForestRegressor(random_state=123)}
 
+clusters_RF = [0,2,4]
+clusters_XGB = [1,3]
 
----
+estimators_RF_XGB = {j: meta_models['RF'] for j in clusters_RF}
+estimators_RF_XGB.update({j: meta_models['XGB'] for j in clusters_XGB}) 
 
+fast_kmedoids_estimator = FastKmedoidsEstimator(estimators=estimators_RF_XGB, 
+                                                n_clusters=2, method='pam', init='heuristic', max_iter=100, 
+                                                random_state=123,  frac_sample_size=0.015, 
+                                                p1=p1, p2=p2, p3=p3, 
+                                                d1='robust_mahalanobis', d2='jaccard', d3='matching', q=1,
+                                                robust_maha_method='trimmed', alpha=0.05, 
+                                                y_type='quantitative')
 
+fast_kmedoids_estimator.fit(X=X, y=Y)
+Y_test_hat = fast_kmedoids_estimator.predict(X=X_test)
 
+mean_absolute_error(y_pred=Y_test_hat, y_true=Y_test)
+```
+
+```
+188007.61
+```
