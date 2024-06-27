@@ -53,7 +53,7 @@ studies, is another promising goal.
 
 - Developing a methodology to apply clustering methods in supervised problems is another highlighted field.
 
-- All these issues have been tackled along this master's thesis
+- All these issues have been tackled along this Master's thesis
 
 
 ---
@@ -129,7 +129,7 @@ It should be noted that the previous algorithm requires that the similarity meas
 
 ---
 
-The methodology called **Related Metric Scaling** (RelMS) was proposed in *Cuadras (1998)* to obtain joint metrics that meet several criteria that allow eliminating redundant information. In *Albarran (2015)* was the first time that this technique was applied to mixed type data.
+The methodology called **Related Metric Scaling** (RelMS) was proposed in *Cuadras (1998)* to obtain joint metrics that meet several criteria that allows eliminating redundant information. In *Albarran (2015)* was the first time that this technique was applied to mixed type data.
 
 Assuming four first steps of the G-Gower distance are already followed, the RelMS is computed as follows: 
 
@@ -208,12 +208,14 @@ $$
 
 where $\mathbf{S}_R$ is a robust estimation of the covariance matrix of $\mathbf{X}$.
 
-For obtaining the robust covariance matrix \cite{gnanadesikan1997} was followed.
+For obtaining the robust covariance matrix Gnanadesikan (1997) was followed.
 
 $\\$
 **Proposed metrics**
 
-- For a context with heterogeneous multivariate data with outliers, the Generalized Gower distance or the Related Metric Scaling will be proposed, using the Robust Mahalanobis distance for the quantitative variables, for the binary variables Jaccard or Sokal, and for multi-classes the simple matching coefficient. 
+- For a context with heterogeneous multivariate data with outliers, the Generalized Gower distance or the 
+Related Metric Scaling will be proposed, using the Robust Mahalanobis distance for the quantitative variables, 
+for the binary variables Jaccard or Sokal, and for multi-classes the simple matching coefficient. 
 
 - However, in a heterogeneous multivariate context without outliers, our proposal would be the Generalized Gower distance or the Related Metric Scaling, using Mahalanobis for the quantitative ones, for the binary ones Jaccard or Sokal, and for the multi-class ones the simple coefficient matching.
 <!---
@@ -440,11 +442,17 @@ Although in this work we have presented the transformation and the Delvin algori
 
 **$k$-medoids**
 
-The $k$-medoids algorithm, proposed by Kaufman (1990) and refined by Park et al. (2009), partitions a dataset into $k$ clusters, with each cluster represented by a medoid—the most central point according to a distance metric. The algorithm starts by defining the initial $k$ clusters based on a chosen distance metric and ordering observations by their calculated distances. Observations are assigned to the nearest medoid to form initial clusters.
+The $k$-medoids algorithm, proposed by Kaufman (1990) and refined by Park et al. (2009), partitions a dataset 
+into $k$ clusters, with each cluster represented by a medoid—the most central point according to a distance metric. 
+The algorithm starts by defining the initial $k$ clusters based on a chosen distance metric and ordering observations 
+by their calculated distances. Observations are assigned to the nearest medoid to form initial clusters.
 
-Next, the sum of intra-cluster variances is calculated to measure cluster similarity. Observations are iteratively reassigned to the closest clusters, and new medoids are recalculated. This iterative process continues until a stopping criterion is met, such as a stable sum of intra-cluster variances over several iterations, or until a maximum number of iterations is reached.
+Next, the sum of intra-cluster variances is calculated to measure cluster similarity. Observations are iteratively 
+reassigned to the closest clusters, and new medoids are recalculated. This iterative process continues until a stopping criteria is met, such as a stable sum of intra-cluster variances over several iterations, or until a maximum number of iterations is reached.
 
-The final cluster configuration is the one that minimizes locally the sum of intra-cluster variances, either when the stopping criterion is met or at the last iteration. This configuration provides a vector indicating the cluster membership of each observation, which can be interpreted as predictions of an underlying response variable.
+The final cluster configuration is the one that minimizes locally the sum of intra-cluster variances, either when 
+the stopping criteria is met or at the last iteration. This configuration provides a vector indicating the cluster 
+membership of each observation, which can be interpreted as predictions of an underlying response variable.
 
 ---
 <!-- header: 'Presentation of Fast k-medoids and k-Fold Fast-k-medoids algorithms
@@ -462,8 +470,7 @@ The steps of the Fast $k$-medoids algorithm are the following:
   3. The out of sample observations $\mathbf{X_{\overline{S}}}$ are assigned to its nearest cluster, that is, $x_i \in\mathbf{X_{\overline{S}}}$ is assigned to cluster $C_{r^*}^S$ 
   where $r^* = arg  \underset{r\in\lbrace 1,\dots,k\rbrace}{Min}   \delta (\textbf{x}_i , \overline{\textbf{x}}_{C_r^S} )$, being  $\overline{\textbf{x}}_{C_r^S}$ the medoid of cluster $C_r^S$.
   4. After all the observation have been clustered, a vector indicating the clusters to which each observation belong 
-  can be build and interpreted as the predictions of an underlying or hidden response variable:
-$$\hat{y}_i = r  \Leftrightarrow  x_i \in C_r^S , \quad \forall i=1,\dots,n; r=1,\dots,k$$
+  is provided.
 
 
 <!---
@@ -485,14 +492,23 @@ This algorithm has been developed after observing that Fast $k$-medoids suffered
 The steps of the $k$-Fold Fast $k$-medoids algorithm are the following:
 
 1. The data matrix $\mathbf{X}$ is split in $q$ folds $\mathbf{X}_{F_1},\dots, \mathbf{X}_{F_{q}}$
-2. Fast $k$-medoids is applied on each fold $\mathbf{X}_{F_j}$, leading to the clusters $C_1^{F_j},\dots, C_k^{F_j}$, and to the medoids $\overline{\textbf{x}}_{1^{F_j}}, \dots, \overline{\textbf{x}}_{k^{F_j}}$, 
-for $j=1,\dots, k_F$.
+2. Fast $k$-medoids is applied on each fold $\mathbf{X}_{F_j}$, leading to the clusters $C_1^{F_j},\dots, C_k^{F_j}$, and to the medoids $\overline{\mathbf{x}}_{1^{F_j}}, \dots, \overline{\mathbf{x}}_{k^{F_j}}$, 
+for $j=1,\dots, q$.
 3. A new data matrix is build concatenating the medoids of each fold by rows: $\mathbf{X_M}$
 4. Fast $k$-medoids is applied on $X_M$ leading to clusters $C_1^{\mathbf{X_M}}, \dots, C_k^{\mathbf{X_M}}$ made up by the previous medoids.
 5. Final clusters rule: the original observation $x_i$ is assigned to the step 4 cluster that contains the medoid of the 
 step 2 cluster to which $x_i$ belongs, and this for all $i=1,\ldots , n$. 
-   For all $i=1,\dots,n, j=1,\dots,k_F$ and $h,r=1,\dots,k$, if $\mathbf{x}_i\in C_h^{F_j}$, then,  $\mathbf{x}_i$ is assigned to $C_r^{\mathbf{X_M}}$ $\Leftrightarrow$ $\overline{\textbf{x}}_{h^{F_j}} \in C_r^{\mathbf{X_M}}$.
+   For all $i=1,\dots,n, j=1,\dots,q$ and $h,r=1,\dots,k$, if $\mathbf{x}_i\in C_h^{F_j}$, then,  $\mathbf{x}_i$ is assigned to $C_r^{\mathbf{X_M}}$ iff  $\hspace{0.1cm}\overline{\mathbf{x}}_{h^{F_j}} \in C_r^{\mathbf{X_M}}$.
   
+
+---
+
+<div style="display: flex; align-items: flex-start; padding-left: 20px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kfold_fast_kmedoids_diagram.jpg" alt="Simulation 3" width="770" style="margin-right: 5px;" />
+    <div style="font-size: 16px; line-height: 1.35; margin-right: 20px;">
+    </div>
+</div>
+
 <!---
 **Key parameters:**
 
