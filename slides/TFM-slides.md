@@ -444,6 +444,7 @@ Although in this work we have presented the transformation and the Delvin algori
 
 The $k$-medoids algorithm, proposed by Kaufman (1990) and refined by Park et al. (2009), partitions a dataset 
 into $k$ clusters, where each cluster is represented by a medoid, that is the most central observation according to certain distance. 
+
 The algorithm starts by defining the initial $k$ medoids based on a formula depending on the chosen distance (heuristic) or randomly. The remaining observations are assigned to its nearest medoid, so that initial clusters are built.
 
 Next an iterative process is carried out, which involves computing  the sum of intra-cluster variances to measure cluster similarity, recalculating the new medoids, and reassigning remaining observations to its nearest medodid. This iterative process continues until a stopping criteria is met, such as a stable sum of intra-cluster variances over several consecutive iterations, or until a maximum number of iterations is reached.
@@ -475,7 +476,7 @@ The steps of the Fast $k$-medoids algorithm are the following:
 
 $\\[4cm]$
 <div style="display: flex; align-items: flex-start; padding-left: 400px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/fast_kmedoids_diagram.jpg" alt="Simulation 3" width="500" style="margin-right: 45px;" />
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/fast_kmedoids_diagram.jpg" alt="Simulation 3" width="570" style="margin-right: 45px;" />
 </div>
 
 <!---
@@ -492,7 +493,7 @@ $\\$
 This algorithm has been developed after observing that Fast $k$-medoids suffered a lose of accuracy when the data
  becomes bigger. The basic idea of $k$-Fold Fast $k$-medoids is to split the data in folds and apply Fast $k$-medoids to each 
  fold, then build a data matrix with the resulting medoids of each fold and apply Fast $k$-medoids again on this medoids 
- data matrix, then assign the original observations to the one of the final clustering by assigning each observation to its medoid.
+ data matrix, then assign the original observations to the final cluster that contains its nearest medoid.
 
 The steps of the $k$-Fold Fast $k$-medoids algorithm are the following:
 
@@ -509,7 +510,7 @@ step 2 cluster to which $x_i$ belongs.
 ---
 $\\[4.3cm]$
 <div style="display: flex; align-items: flex-start; padding-left: 450px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kfold_fast_kmedoids_diagram.jpg" alt="Simulation 3" width="330" style="margin-right: 45px;" />
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kfold_fast_kmedoids_diagram.jpg" alt="Simulation 3" width="320" style="margin-right: 45px;" />
 </div>
 
 
@@ -701,7 +702,7 @@ $\\[2cm]$
 $\\$
 The main aim was apply clustering for interpreting SHARE data using Fast $k$-medoids, incorporating sample weights. 
 
-SHARE stands for urvey of Health, Ageing and Retirement in Europe (SHARE), which is the largest
+SHARE stands for Survey of Health, Ageing and Retirement in Europe (SHARE), which is the largest
 cross-European social science panel study dataset covering insights into European individuals’ public health and socioeconomic living conditions.
 
 The first wave is clustered using quantitative $(\texttt{health}, \texttt{dependency}, \texttt{selfperceived}, \texttt{socio\_economic})$ and categorical $(\texttt{gender}, \texttt{agegroup}, \texttt{marriage})$ variables, with $k=2$ groups and Generalized Gower distance. The two groups are analyzed longitudinally across waves $(2015, 2017, 2020)$ using relevant SHARE variables to reveal trends over time.
