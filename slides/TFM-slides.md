@@ -443,16 +443,15 @@ Although in this work we have presented the transformation and the Delvin algori
 **$k$-medoids**
 
 The $k$-medoids algorithm, proposed by Kaufman (1990) and refined by Park et al. (2009), partitions a dataset 
-into $k$ clusters, with each cluster represented by a medoid—the most central point according to a distance metric. 
-The algorithm starts by defining the initial $k$ clusters based on a chosen distance metric and ordering observations 
-by their calculated distances. Observations are assigned to the nearest medoid to form initial clusters.
+into $k$ clusters, where each cluster is represented by a medoid, that is the most central observation according to certain distance. 
+The algorithm starts by defining the initial $k$ medoids based on a formula depending on the chosen distance (heuristic) or randomly. The remaining observations are assigned to its nearest medoid, so that initial clusters are built.
 
-Next, the sum of intra-cluster variances is calculated to measure cluster similarity. Observations are iteratively 
-reassigned to the closest clusters, and new medoids are recalculated. This iterative process continues until a stopping criteria is met, such as a stable sum of intra-cluster variances over several iterations, or until a maximum number of iterations is reached.
+Next an iterative process is carried out, which involves computing  the sum of intra-cluster variances to measure cluster similarity, recalculating the new medoids, and reassigning remaining observations to its nearest medodid. This iterative process continues until a stopping criteria is met, such as a stable sum of intra-cluster variances over several consecutive iterations, or until a maximum number of iterations is reached.
 
 The final cluster configuration is the one that minimizes locally the sum of intra-cluster variances, either when 
-the stopping criteria is met or at the last iteration. This configuration provides a vector indicating the cluster 
-membership of each observation, which can be interpreted as predictions of an underlying response variable.
+the stopping criteria is activated or at the last iteration. 
+
+This configuration provides a vector indicating the cluster membership of each observation, which can be interpreted as predictions of an underlying response variable.
 
 ---
 <!-- header: 'Presentation of Fast k-medoids and k-Fold Fast-k-medoids algorithms
@@ -501,10 +500,10 @@ The steps of the $k$-Fold Fast $k$-medoids algorithm are the following:
 2. Fast $k$-medoids is applied on each fold $\mathbf{X}_{F_j}$, leading to the clusters $C_1^{F_j},\dots, C_k^{F_j}$, and to the medoids $\overline{\mathbf{x}}_{1^{F_j}}, \dots, \overline{\mathbf{x}}_{k^{F_j}}$, 
 for $j=1,\dots, q$.
 3. A new data matrix is build concatenating the medoids of each fold by rows: $\mathbf{X_M}$
-4. Fast $k$-medoids is applied on $\mathbf{X_M}$ leading to clusters $C_1^{\mathbf{X_M}}, \dots, C_k^{\mathbf{X_M}}$ made up by the previous medoids.
+4. Fast $k$-medoids is applied on $\mathbf{X_M}$ leading to clusters $C_1^{\mathbf{X_M}}, \dots, C_k^{\mathbf{X_M}}$.
 5. Final clusters rule: the original observation $x_i$ is assigned to the step 4 cluster that contains the medoid of the 
-step 2 cluster to which $x_i$ belongs, and this for all $i=1,\ldots , n$. 
-   For all $i=1,\dots,n, j=1,\dots,q$ and $h,r=1,\dots,k$, if $\mathbf{x}_i\in C_h^{F_j}$, then,  $\mathbf{x}_i$ is assigned to $C_r^{\mathbf{X_M}}$ iff  $\hspace{0.1cm}\overline{\mathbf{x}}_{h^{F_j}} \in C_r^{\mathbf{X_M}}$.
+step 2 cluster to which $x_i$ belongs. 
+   - If $\mathbf{x}_i\in C_h^{F_j}$ $\hspace{0.2cm}\Rightarrow\hspace{0.2cm}$ $\mathbf{x}_i$ is assigned to $C_r^{\mathbf{X_M}}\hspace{0.02cm}$ if and only if  $\hspace{0.1cm}\overline{\mathbf{x}}_{h^{F_j}} \in C_r^{\mathbf{X_M}},\hspace{0.12cm}$ for all $i=1,\dots,n;\hspace{0.05cm} j=1,\dots,q;  \hspace{0.05cm}h,r=1,\dots,k$
   
 
 ---
