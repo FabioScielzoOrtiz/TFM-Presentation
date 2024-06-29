@@ -835,7 +835,7 @@ fast_kmedoids_estimator = FastKmedoidsEstimator(estimators=estimators_RF_XGB,
                                                 robust_maha_method='trimmed', alpha=0.05, 
                                                 y_type='quantitative')
 
-fast_kmedoids_estimator.fit(X=X, y=Y)
+fast_kmedoids_estimator.fit(X=X_tain, y=Y_tain)
 
 Y_test_hat = fast_kmedoids_estimator.predict(X=X_test)
 
