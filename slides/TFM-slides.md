@@ -476,7 +476,7 @@ The steps of the Fast $k$-medoids algorithm are the following:
 
 $\\[4cm]$
 <div style="display: flex; align-items: flex-start; padding-left: 400px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/fast_kmedoids_diagram.jpg" alt="Simulation 3" width="570" style="margin-right: 45px;" />
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/fast_kmedoids_diagram.jpg" alt="Simulation 3" width="500" style="margin-right: 45px;" />
 </div>
 
 <!---
