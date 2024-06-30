@@ -843,3 +843,8 @@ mean_absolute_error(y_pred=Y_test_hat, y_true=Y_test)
 ```
 
 >$\small\texttt{188007.61}$
+
+---
+<!-- header: 'Thank you for your attention' -->
+
+$$\LARGE\textbf{Thank's for your attention!}$$
