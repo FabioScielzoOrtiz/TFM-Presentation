@@ -480,7 +480,7 @@ The steps of the Fast $k$-medoids algorithm are the following:
 
 $\\[4cm]$
 <div style="display: flex; align-items: flex-start; padding-left: 400px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/fast_kmedoids_diagram.jpg" alt="Simulation 3" width="500" style="margin-right: 45px;" />
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/fast_kmedoids_diagram.jpg" alt="Simulation 3" width="460" style="margin-right: 45px;" />
 </div>
 
 <!---
@@ -512,8 +512,9 @@ step 2 cluster to which $x_i$ belongs.
 
 ---
 $\\[4.3cm]$
-<div style="display: flex; align-items: flex-start; padding-left: 450px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kfold_fast_kmedoids_diagram - 1.jpg" alt="Simulation 3" width="320" style="margin-right: 45px;" />
+<div style="display: flex; align-items: flex-start; padding-left: 100px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kfold_fast_kmedoids_diagram - 1.jpg" alt="Simulation 3" width="500" style="margin-right: 45px;" />
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kfold_fast_kmedoids_diagram - 2.jpg" alt="Simulation 3" width="500" style="margin-right: 45px;" />
 </div>
 
 
@@ -534,6 +535,11 @@ The advantage of these simulations is that they are specifically designed for cl
 Initially, all variables are quantitative, but some were converted to categorical for analysis.
 
 Outliers were artificially introduced in some of the quantitative variables by mean of  *outlier_contamination* function, which modified the data by injecting extreme values.
+
+Through this simulations several comparative analysis were carried out, and here only few have been include.
+1. Comparison between  $k$-medoids and Fast $k$-medodis.
+2. Comparison between Fast $k$-medoids and $k$-Fold Fast $k$-medoids to existing well-known clustering procedures likeagglomerative, birch, bisecting $k$-means, CLARA, diana, dipinit, GMM, $k$-means, $k$-medoids, LDA $k$-means,  
+mini batch $k$-means, spectral clustering, spectral bi-clustering, spectral co-clustering, and sub $k$-means.
 
 ---
 
