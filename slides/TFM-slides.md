@@ -20,6 +20,10 @@ footer: '**Fabio Scielzo Ortiz**
 ### Madrid, 10/07/24
 
 ![logo GitHub Logo](../assets/logo_uc3m_2.png)
+![logo GitHub Logo](../assets/logo_uc3m_2.png)
+
+<img src="../assets/logo_TED.png" alt="TED Logo" width="400" style="margin-left: 20px;"/>
+
 
 ---
 <!-- header: 'Table of contents' -->
@@ -71,7 +75,7 @@ Considering a mixed-type data matrix $\mathbf{X}$, whose first $p_1$ columns con
    $\phi(\mathbf{x}_i^M, \mathbf{x}_r^M)$ is the number of matches between units $i$ and $r$ among the multi-class categorical variables.
  
 
-- Following to *Gower (1971)*, the **Gower's distance** between the pair of observations $(\mathbf{x}_i, \mathbf{x}_r)$  is defined as:
+- In *Gower (1971)*, **Gower's distance** between the pair of observations $(\mathbf{x}_i, \mathbf{x}_r)$  was defined as:
 $$
 \delta^2(\mathbf{x}_i, \mathbf{x}_r)_{Gower}= 1 - s(\mathbf{x}_i, \mathbf{x}_r)_{Gower} \hspace{0.1cm }
 $$
@@ -94,7 +98,7 @@ $$
 ---
 <!-- header: 'Presentation of robust metrics: robust G-Gower and robust RelMS' -->
 
-Following to *Grané (2021b)*, **Generalized Gower** distance (G-Gower) is defined as follows: 
+In *Grané et al. (2021b)*, **Generalized Gower** distance (G-Gower) was defined as follows: 
  
 1. Consider the data matrix partitioned in three sub-matrices $\mathbf{X}=[\mathbf{X}_Q\; \mathbf{X}_B \; \mathbf{X}_{M}]$, each of which corresponds
  to a variable type.
@@ -129,7 +133,7 @@ It should be noted that the previous algorithm requires that the similarity meas
 
 ---
 
-The methodology called **Related Metric Scaling** (RelMS) was proposed in *Cuadras (1998)* to obtain joint metrics that meet several criteria that allows eliminating redundant information. In *Albarran (2015)* was the first time that this technique was applied to mixed type data.
+The methodology called **Related Metric Scaling** (RelMS) was proposed in *Cuadras (1998)* to obtain joint metrics that meet several criteria that allows eliminating redundant information. In *Albarran et al. (2015)* was the first time that this technique was applied to mixed type data.
 
 Assuming four first steps of the G-Gower distance are already followed, the RelMS is computed as follows: 
 
@@ -141,7 +145,7 @@ where $\mathbf{H}= \mathbf{I} - \frac{1}{n}\, \mathbf{1}\, \mathbf{1}^t$ is the 
 
 2. The Gram matrix of the joint metric is calculated by combining matrices $\mathbf{G}_h$,  for $h=Q,B,M$:
 $$
-\mathbf{G} = \sum_{h=Q,B,M} \mathbf{G}_h -\frac{1}{3} \sum _{k\neq h = Q,B,M} \mathbf{G}_k^{1/2} \, \mathbf{G}_h^{1/2}
+\mathbf{G} = \sum_{h=Q,B,M} \mathbf{G}_h -\frac{1}{3} \sum _{k, h = Q,B,M} \mathbf{G}_k^{1/2} \, \mathbf{G}_h^{1/2}
 $$
 3. Finally, the joint metric is obtained as follows:
     $$
@@ -200,10 +204,10 @@ with $\omega \geq 2 \, | \lambda _{min} | $, with $\lambda _{min} $ being the sm
 ---
 
 $\\$
-Given a data matrix $\mathbf{X}=(X_1,...,X_p)$ of quantitative variables, a **robust Mahalanobis** (squared) distance between the pair of observations $(\textbf{x}_i, \textbf{x}_r)$ can be defined as:
+Given a data matrix $\mathbf{X}=(X_1,...,X_p)$ of quantitative variables, a **Robust Mahalanobis** (squared) distance between the pair of observations $(\mathbf{x}_i, \mathbf{x}_r)$ can be defined as:
 
 $$
-  \delta^2(\textbf{x}_i,\textbf{x}_r)_{RMaha}  =   (\textbf{x}_i - \textbf{x}_r )^t \, \mathbf{S}^{-1}_R \, (\textbf{x}_i - \textbf{x}_r )
+  \delta^2(\mathbf{x}_i,\mathbf{x}_r)_{RMaha}  =   (\mathbf{x}_i - \mathbf{x}_r )^t \, \mathbf{S}^{-1}_R \, (\mathbf{x}_i - \mathbf{x}_r )
 $$
 
 where $\mathbf{S}_R$ is a robust estimation of the covariance matrix of $\mathbf{X}$.
@@ -460,7 +464,7 @@ This configuration provides a vector indicating the cluster membership of each o
 
 **Fast $k$-medoids**
 
-The basic idea of Fast $k$-medoids algorithm is to apply $k$-medoids on a random sample of the data matrix $\mathbf{X}$, clustering those observations with the algorithm, and clustering the remaining observations applying the rule of assigning each 
+The basic idea of Fast $k$-medoids algorithm is to apply $k$-medoids on a random sample of the data matrix $\mathbf{X}$, clustering those observations with the algorithm, and the remaining observations applying the rule of assigning each 
 out of sample observation to its nearest cluster, which means to the cluster with the nearest medoid.
 
 The steps of the Fast $k$-medoids algorithm are the following:
@@ -468,7 +472,7 @@ The steps of the Fast $k$-medoids algorithm are the following:
   1. A random sample $\mathbf{X_S}$ of size $n_S$ of $\mathbf{X}$ is taken.
   2. $k$-medoids is applied on  $\mathbf{X_S}$, therefore the sample observations are clustered leading to the sample clusters $C_1^S,\dots , C_k^S$.
   3. The out of sample observations $\mathbf{X_{\overline{S}}}$ are assigned to its nearest cluster, that is, $x_i \in\mathbf{X_{\overline{S}}}$ is assigned to cluster $C_{r^*}^S$ 
-  where $r^* = arg  \underset{r\in\lbrace 1,\dots,k\rbrace}{Min}   \delta (\textbf{x}_i , \overline{\textbf{x}}_{C_r^S} )$, being  $\overline{\textbf{x}}_{C_r^S}$ the medoid of cluster $C_r^S$.
+  where $r^* = arg  \underset{r\in\lbrace 1,\dots,k\rbrace}{Min}   \delta (\mathbf{x}_i , \overline{\mathbf{x}}_{C_r^S} )$, being  $\overline{\mathbf{x}}_{C_r^S}$ the medoid of cluster $C_r^S$.
   4. After all the observation have been clustered, a vector indicating the clusters to which each observation belong 
   is provided.
 
@@ -490,9 +494,8 @@ The key parameters of Fast $k$-medoids algorithm are those already key in $k$-me
 $\\$ 
 **$k$-Fold Fast $k$-medoids**
 
-This algorithm has been developed after observing that Fast $k$-medoids suffered a lose of accuracy when the data
- becomes bigger. The basic idea of $k$-Fold Fast $k$-medoids is to split the data in folds and apply Fast $k$-medoids to each 
- fold, then build a data matrix with the resulting medoids of each fold and apply Fast $k$-medoids again on this medoids 
+This algorithm has been developed after observing that Fast $k$-medoids suffered a lose of accuracy when the size of the dataset becomes bigger. The basic idea of $k$-Fold Fast $k$-medoids is to split the data in folds and apply Fast $k$-medoids to each 
+ fold, then a new data matrix is built with the resulting medoids of each fold and apply Fast $k$-medoids again on this medoids 
  data matrix, then assign the original observations to the final cluster that contains its nearest medoid.
 
 The steps of the $k$-Fold Fast $k$-medoids algorithm are the following:
@@ -510,7 +513,7 @@ step 2 cluster to which $x_i$ belongs.
 ---
 $\\[4.3cm]$
 <div style="display: flex; align-items: flex-start; padding-left: 450px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kfold_fast_kmedoids_diagram.jpg" alt="Simulation 3" width="320" style="margin-right: 45px;" />
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kfold_fast_kmedoids_diagram - 1.jpg" alt="Simulation 3" width="320" style="margin-right: 45px;" />
 </div>
 
 
