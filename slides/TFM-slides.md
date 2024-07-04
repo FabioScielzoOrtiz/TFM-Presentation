@@ -57,7 +57,7 @@ studies, is another promising goal.
 
 - Developing a methodology to apply clustering methods in supervised problems is another highlighted field.
 
-- All these issues have been tackled along this Master's thesis
+- All these issues have been tackled along this Master's thesis.
 
 
 ---
@@ -91,7 +91,7 @@ $$
 \frac{1}{p} \, \sum _{k=1}^{p} \left(1- \frac{\mid x_{ik} - x_{jk} \mid}{G_k} \right)
 $$
 
-3. If we consider a set of binary variables, Gower's similarity coincides with Jaccard's.
+3. If we consider a set of binary variables, Gower's similarity coincides with Jaccard's coefficient.
 
 4. If we consider a set of multi-class categorical variables, Gower similarity coincides with simple matching similarity coefficient.
 
@@ -132,16 +132,16 @@ It should be noted that the previous algorithm requires that the similarity meas
 --->
 
 ---
-
+$\\$
 The methodology called **Related Metric Scaling** (RelMS) was proposed in *Cuadras (1998)* to obtain joint metrics that meet several criteria that allows eliminating redundant information. In *Albarran et al. (2015)* was the first time that this technique was applied to mixed type data.
 
 Assuming four first steps of the G-Gower distance are already followed, the RelMS is computed as follows: 
 
 1. For each sub-matrix of squared distances the Gram matrix is computed: 
-$$
-\mathbf{G}_h = -\frac{1}{2}\,\mathbf{H}\, \mathbf{D} _h^{(2)\prime}\, \mathbf{H},
-$$
-where $\mathbf{H}= \mathbf{I} - \frac{1}{n}\, \mathbf{1}\, \mathbf{1}^t$ is the centering matrix, $\mathbf{I}$ is the identity matrix of size $n$ and $\mathbf{1}$ is a $n\times 1$ vector of ones. 
+    $$
+    \mathbf{G}_h = -\frac{1}{2}\,\mathbf{H}\, \mathbf{D} _h^{(2)\prime}\, \mathbf{H},
+    $$
+    where $\mathbf{H}= \mathbf{I} - \frac{1}{n}\, \mathbf{1}\, \mathbf{1}^t$ is the centering matrix, $\mathbf{I}$ is the identity matrix of size $n$ and $\mathbf{1}$ is a $n\times 1$ vector of ones. 
 
 2. The Gram matrix of the joint metric is calculated by combining matrices $\mathbf{G}_h$,  for $h=Q,B,M$:
 $$
@@ -494,9 +494,9 @@ The key parameters of Fast $k$-medoids algorithm are those already key in $k$-me
 $\\$ 
 **$k$-Fold Fast $k$-medoids**
 
-This algorithm has been developed after observing that Fast $k$-medoids suffered a lose of accuracy when the size of the dataset becomes bigger. The basic idea of $k$-Fold Fast $k$-medoids is to split the data in folds and apply Fast $k$-medoids to each 
- fold, then a new data matrix is built with the resulting medoids of each fold and apply Fast $k$-medoids again on this medoids 
- data matrix, then assign the original observations to the final cluster that contains its nearest medoid.
+This algorithm has been developed after observing that Fast $k$-medoids suffered a lose of accuracy when the size of the dataset becomes bigger. The basic idea of $k$-Fold Fast $k$-medoids is to split the data in folds and apply Fast $k$-medoids 
+to each  fold, then a new data matrix is built with the resulting medoids of each fold and apply Fast $k$-medoids again 
+on this medoids  data matrix, then assign each original observations to the final cluster that contains its nearest medoid.
 
 The steps of the $k$-Fold Fast $k$-medoids algorithm are the following:
 
@@ -538,7 +538,7 @@ Outliers were artificially introduced in some of the quantitative variables by m
 
 Through this simulations several comparative analysis were carried out, and here only few have been include.
 1. Comparison between  $k$-medoids and Fast $k$-medodis.
-2. Comparison between Fast $k$-medoids and $k$-Fold Fast $k$-medoids to existing well-known clustering procedures likeagglomerative, birch, bisecting $k$-means, CLARA, diana, dipinit, GMM, $k$-means, $k$-medoids, LDA $k$-means,  
+2. Comparison between Fast $k$-medoids and $k$-Fold Fast $k$-medoids to existing well-known clustering procedures like agglomerative, birch, bisecting $k$-means, CLARA, diana, dipinit, GMM, $k$-means, $k$-medoids, LDA $k$-means,  
 mini batch $k$-means, spectral clustering, spectral bi-clustering, spectral co-clustering, and sub $k$-means.
 
 ---
@@ -589,7 +589,7 @@ $\\[0.3cm]$
 
 ---
 
-$\\[2.5cm]$
+$\\[2cm]$
 #### Simulation 3
 
 - *n=100k, k=4, outlier contamination.* 
@@ -615,7 +615,7 @@ $\\[2.5cm]$
 
 ---
 
-$\\[2cm]$
+$\\[1.5cm]$
 #### Simulation 3
 <div style="display: flex; align-items: flex-start; padding-left: 35px;">
     <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/mds_plot_simulation_3.jpg" alt="Simulation 3" width="800" style="margin-right: 1px;" />
@@ -656,7 +656,7 @@ $\\[1.6cm]$
 
 --->
 
-$\\[2cm]$
+$\\[1.8cm]$
 
 #### Simulation 6
 - *n=1M, k=3, outlier contamination.* 
@@ -681,7 +681,7 @@ $\\[2cm]$
 
 ---
 
-$\\[2cm]$
+$\\[1.7cm]$
 
 #### Simulation 7
 - *n=300k, k=3, without outlier contamination.* 
@@ -708,7 +708,7 @@ $\\[2cm]$
 
 ---
 <!-- header: 'Application to real data' -->
-$\\$
+$\\[0.2cm]$
 The main aim was apply clustering for interpreting SHARE data using Fast $k$-medoids, incorporating sample weights. 
 
 SHARE stands for Survey of Health, Ageing and Retirement in Europe (SHARE), which is the largest
@@ -750,7 +750,7 @@ $\\[3.5cm]$
   - **FastKmedoids**: a package to apply the proposed clustering algorithms Fast $k$- medoids and
    $k$-Fold Fast $k$-medoids.
 
-  - **SupervisedClustering**: a package to apply clustering methods in regression and classification problems
+  - **SupervisedClustering**: a package to apply clustering methods in regression and classification problems.
 
 
 ```python
@@ -790,7 +790,7 @@ array([[0.        , 2.19522219, 1.88018652, ..., 1.96158612, 3.03894716,
 ---
 
 $\\$
-### FastKmedodis
+### FastKmedoids
 
 
 ```python
@@ -852,6 +852,17 @@ mean_absolute_error(y_pred=Y_test_hat, y_true=Y_test)
 ```
 
 >$\small\texttt{188007.61}$
+
+
+---
+
+More extensive tutorials about the packages can be found here:
+
+- **PyDistances**: https://fabioscielzoortiz.github.io/PyDistances-book/intro.html
+
+- **FastKmedoids**: https://fabioscielzoortiz.github.io/FastKmedoids-book/intro.html
+
+- **SupervisedClustering**: https://fabioscielzoortiz.github.io/SupervisedClustering-book/intro.html
 
 ---
 <!-- header: 'Thank you for your attention' -->
