@@ -222,223 +222,6 @@ Related Metric Scaling will be proposed, using the Robust Mahalanobis distance f
 for the binary variables Jaccard or Sokal, and for multi-classes the simple matching coefficient. 
 
 - However, in a heterogeneous multivariate context without outliers, our proposal would be the Generalized Gower distance or the Related Metric Scaling, using Mahalanobis for the quantitative ones, for the binary ones Jaccard or Sokal, and for the multi-class ones the simple coefficient matching.
-<!---
-
-\note{
-
-\subsection{ Robust variance estimation }
-
-Let $X_j$ be a variable of quantitative type.
-
-\subsubsection{ Median absolute deviation }
-
-   Following this proposal, a robust estimation of the variance of ${X}_j$ is defined as:
- 
-  $$\sigma^{ 2}_R(X_j)   =   MAD(X_j)^{ 2} \hspace{0.05cm } =   Me  \Bigl[   \Bigl(   \left|   x_{ij} - Me(X_j )   \right|   :   i = 1,...,n   \Bigr)   \Bigr] ^{ 2}$$
-
-  
- 
-  \subsubsection{ Trimmed variance }
-
-
-  The $\alpha$-trimmed version of variable $X_j$ is defined as:
-
-$$X_j^{ \alpha}  =  \Bigl(  x_{ij}  \hspace{0.1cm}\mathbf{: }\hspace{0.1cm}  i\in \lbrace 1,\dots,n \rbrace   ,  \hspace{0.1cm } x_{ij} \in \big[  Q(\alpha/2, X_j)  ,  \hspace{0.1cm } Q(1-\alpha/2 , X_j)\big]   \Bigr)$$
-
-where $Q(z, X_j)$ is the quantile $z\in [0,1]$ of $X_j$, that is, the value such that the proportion of values of $X_j$ that are below it is $ z$.
-
-Following this proposal, a robust estimation of the variance of  $X_j$ is defined as:
-  $$\sigma^{ 2}_R(X_j)   =   \sigma^{ 2}(X_j^\alpha)   =   \dfrac{1}{n} \, \sum _{i=1}^n   \Bigl(   x_{ij} - \overline{X_j^\alpha}   \Bigr)^2$$
-
-where 
-$$\overline{X_j^\alpha} = \dfrac{1}{n}\, \sum _{i\in \mathcal{I}(X_j^\alpha)} x_{ij},
-$$
-being $\mathcal{I}(X_j^\alpha)= \Bigl\{   i \in \lbrace 1,\dots , n \rbrace  \hspace{0.1cm } :\hspace{0.1cm }   x_{ij} \in X_j^\alpha   \Bigr\}  $ the set of indices of the observations of $X_j^\alpha$ .
-
-\vspace{0.2cm}
-
-\textbf{Remark:}
-
-$\alpha$ is a parameter that modulates the number of observations of the original variable that will be trimmed for the calculation of the robust variance. $\alpha \in [0,1]$ and the larger it is, the more observations of the original variable will be trimmed.
-
-%\newpage
-
-\subsubsection{Winsorized variance }
-
- 
-  The $\alpha$-winsorized version of the variable $X_j$ is defined as:
-
-     $$X_j^{\alpha}  =  \Bigl(  h(x)  \hspace{0.1cm }\mathbf{:} \hspace{0.1cm } x \in X_j   \Bigr)$$
-    
-where function $h$ is defined as follows:
-$$
-h(x)   =   \begin{cases}
-      a(\alpha )  , \hspace{0.1cm }\text{if } \hspace{0.1cm }x \in A(\alpha), \\
-      b(\alpha )  , \hspace{0.1cm }\text{if}\hspace{0.1cm } x \in B(\alpha), \\
-      x  , \hspace{0.1cm }\text{if } \hspace{0.1cm } x \in X_j   \hspace{0.1cm }\text{but}\hspace{0.1cm }   x \not\in A(\alpha)   \hspace{0.1cm }\text{nor}\hspace{0.1cm }   B(\alpha), \end{cases}
-$$
-where $a(\alpha)$ is the value of $X_j$ that is immediately greater than $ Q(\alpha/2,X_j)$, $b(\alpha)$ is the value of $X_j$ that is immediately less than $ Q(1-\alpha/2, X_j )$
-and sets $A(\alpha)  =  \bigl\{   x_{ij}  :  x_{ij }  \leq  Q(\alpha/2  ,  X_j)   \bigr\}$, $B(\alpha)  =  \lbrace   x_{ij}  :  x_{ij}  \geq   Q(1-\alpha/2  ,  X_j)   \bigr\}$.
-
-Following this proposal, a robust estimation of the variance of $X_j$ is defined as:
-  $$\sigma^{ 2}_R(X_j)   =   \sigma^{ 2}(X_j^{\alpha} )   =   \dfrac{1}{n} \cdot \sum _{i=1}^n   \Bigl(   x_{ ij} - \overline{X_j^{\alpha}}   \Bigr)^2$$
-
-where
-$\overline{X_j^\alpha} = \frac{1}{n}\cdot \sum _{i\in \mathcal{I}(X_j^\alpha)} x_{ij}$
-and $\mathcal{I}(X_j^\alpha)= \Bigl\{ i \in \lbrace 1,\dots , n \rbrace :  x_{ij} \in X_j^\alpha   \Bigr\}$ is the set of indices of the observations of $X_j^\alpha$ .
-
-
-\vspace{0.2cm}
-
-\textbf{Remark:}
-
-$\alpha$ is the parameter that modulates the winsorization volume. $\alpha \in [0,1]$ and the larger it is, the more observations will be winsorized, since more observations will be included in $A(\alpha)$ and $B(\alpha)$, and will be set as $a (\alpha)$ or $b(\alpha)$, respectively, that is, they will be winsorized.
-
-
-\subsection{ Robust correlation estimation }
-
-Let $X_j$ and $X_k$ be variables of quantitative type, and let $Z_j$ be the auxiliary variable defined as $Z_j = \dfrac{X_j}{ \sqrt{\sigma^2_R(X_j)} } $. Then, a robust estimation of Pearson's correlation between ${X}_k $ and $ {X}_j$ is defined as:
-
-\begin{equation}
-  \label{eq.coeff.correl}
-r_{kj}^{ R}  =  \dfrac{ \sigma^{ 2}_1 - \sigma^{ 2}_2 }{\sigma_1^{ 2}\hspace{0.1cm }+ \sigma_2^{ 2}}
-\end{equation}
-
-$\vspace{0.05cm}$
-
-where $ \sigma_1^{ 2} = \sigma^{ 2}_R(Z_k+Z_j) $ and $ \sigma_2^{ 2} = \sigma^{ 2}_R(Z_k+Z_j)  $.
-
-
-
-
-\subsection{ Robust covariance estimation }
-
-Using the formula (\ref{eq.coeff.correl}) and the relationship between Pearson's correlation and covariance, we have a robust estimation for the covariance between $X_j$ and $\hspace {0.02cm}X_k$:
-
-
-\begin{equation}
-  \label{eq.coeff.cov}
-  s_{kj}^{ R}  =  r_{kj}^{ R} \, \sqrt{  \sigma_R^{ 2}(X_j) \, \sigma_R^{ 2}(X_k)  }
-\end{equation}
-
-  \subsection{ Robust estimation of the correlation matrix }
-
-A robust estimation of the correlation matrix of $\mathbf{X}$ is:
-
-$$\mathbf{R}_R  =  \Bigl(r_{kj}^{ R}   \Bigr)_{k,j = 1,\dots ,p}$$
-
-where $  r_{kj}^{ R} $ is a robust estimation of Pearson's correlation between $  {X}_k\hspace{0.03cm }$ and $  {X}_j $, defined  in (\ref{eq.coeff.correl}).
-
- 
- \subsection{ Robust estimation of the covariance matrix }
-
-A robust estimation of the covariance matrix of $\mathbf{X}$ is:
-
-$$\mathbf{S}_R  =  \Bigl(   s_{kj}^{ R}   \Bigr)_{k,j = 1,\dots ,p}$$
-
-
-where $  s_{kj}^{ R} $ is a robust estimation of the covariance between $ {X}_k\hspace {0.03cm}$ and $ {X}_j $, defined in (\ref{eq.coeff.cov}).
-
-%\newpage
-
-\subsection{ Inverse of the robust estimation of the covariance matrix }
-
-To calculate the robust Mahalanobis distance it is necessary to calculate the inverse of $\mathbf{S}_R$.
-
-\begin{itemize}
-\item If $ \mathbf{S}_R $ is positive definite, then its inverse can be calculated.
-
-\item If $\mathbf{S}_R$ is positive semidefinite, then it has no inverse, but its Moore-Penrose pseudo-inverse could be calculated.
-
-\item If $\mathbf{S}_R$ is positive non-semidefinite, then it can be invertible (if it has no null eigenvalues) or non-invertible (if it has null eigenvalues). But even in the first case, even though it had an inverse, when using it with the Mahalanobis distance negative or even imaginary distances could be obtained, which would not make sense. Therefore, this is the most problematic case.
-\end{itemize}
-
-\textbf{Remarks:}
-\begin{enumerate}
-\item The condition for a matrix to be invertible is that its determinant is different from zero, and since the determinant of a matrix can be decomposed into the product of its eigenvalues, then, a matrix is invertible if and only if all its eigenvalues are different from zero.
-\begin{gather*}
-\vspace{-1cm}
-\exists  \hspace{0.1cm } S_R^{-1}  \Leftrightarrow det(S_R) \hspace{0.086cm}=  \lambda_1 \cdot . .. \cdot \lambda_n  \neq  0 \\
- \Leftrightarrow  S_R  \hspace{0.1cm }\text{does not have eigenvalues equal to zero.}
-\end{gather*}
-
-
-\item That $\mathbf{R}_R$ is positive definite means that $\mathbf{S}_R$ is also positive.
-
-\end{enumerate}
-
-
-
-\subsubsection{Delvin transformation to obtain $\mathbf{S}_R$ positive definite }
-
-As seen in the previous section, it is important that $\mathbf{S}_R$ is positive definite in order to calculate its inverse and not encounter problems in calculating the Mahalanobis distance.
-
-\cite{delvin1975} proposed a transformation such that, when $\mathbf{S}_R$ is not positive definite, a transformed version is obtained that is positive definite or at least closer to being positive definite.
-
-The proposed transformation $\mathcal{G}$ of $\mathbf{R}_R$ is as follows:
-
-$$\mathcal{G}(\mathbf{R}_R) = \Bigl[   g   \bigl( \hspace{0.05 cm} r_{kj}^{ R} \hspace{0.05 cm} \bigr)   \Bigr]_{k,j=1,\dots ,p}$$
-    
-    
-where:
-
-$$
-g   \bigl( \hspace{0.05 cm} r_{kj}^{ R} \hspace{0.05 cm} \bigr)   =   \begin{cases}
-     0  ,  \text{ if }  \left|   r_{kj}^R   \right|  \leq  z(\epsilon), \\
-    z^{-1}\left(  z( r_{kj}^{ R} )  +  \epsilon \right)  ,  \text{ if }  r_{ kj}^{ R}  <  -z(\epsilon), \\
-    z^{-1}\left(  z( r_{kj}^{ R} )  -  \epsilon \right)  ,  \text{ if }  r_{ kj}^{ R}   >   z(\epsilon), \end{cases}
-$$
-
-where $\epsilon$ is a small positive number, for example, $\epsilon=0.05$, $z (x) = \arctan{h (x)} = \frac{1}{2}\,\log\left(\frac{1+x}{1-x}\right)$, $z^{-1} (x)  =  \tan{h(x)}$, and $z(\epsilon)= z(0.05) \approx 0.05$.
-
-
- 
-\textbf{How does the $g$ transformation work?}
-
-\begin{itemize}
-     \item If $\hspace{0.05 cm}r_{kj}>0.05\hspace{0.05 cm}$, then, $\hspace{0.03 cm} g(r_{kj}) \hspace{0.05 cm}=\hspace{ 0.05 cm} r_{kj} - \varepsilon\hspace{0.05 cm}$, with $\hspace{0.05 cm}\varepsilon >0\hspace{0.05 cm}$ small. That is, $\hspace{0.05 cm}g\hspace{0.03 cm}$ transforms $\hspace{0.05 cm}r_{kj}\hspace{0.05 cm}$ into a slightly lower correlation.
-
-
-     \item If $\hspace{0.05 cm}r_{kj}<-0.05\hspace{0.05 cm}$, then, $\hspace{0.03 cm}g(r_{jk})\hspace{0.05 cm} =\hspace {0.05 cm} r_{jk} + \varepsilon\hspace{0.03 cm}$, with $\hspace{0.03 cm}\varepsilon >0\hspace{0.03 cm}$ small. That is, $\hspace{0.03 cm}g\hspace{0.03 cm}$ transforms $\hspace{0.05 cm}r_{kj}\hspace{0.05 cm}$ into a slightly higher correlation.
-
-
-    \item If $\hspace{0.05 cm}r_{kj} \in \left[-0.05,   0.05 \right]\hspace{0.05 cm}$, then, $g(r_{kj}) \hspace{0.05 cm}=\hspace{0.05 cm}0$. That is, $\hspace{0.03 cm}g\hspace{0.03 cm}$ transforms $\hspace{0.05 cm}r_{kj}\hspace{0.05 cm}$ into zero.
-\end{itemize}
-
- 
-
-
-  \subsubsection{ Delvin algorithm to obtain positive definite $\mathbf{S}_R$ }
-
-The following algorithm uses the Delvin transformation to, given the matrix $\mathbf{S}_R$, in the case that it is not positive definite, obtain a transformation that is positive definite, and therefore invertible, and that therefore can be used without problems for the calculation of the robust Mahalanobis distance.
-
-\begin{itemize}
-\item $\mathcal{G}(\mathbf{R}_R)$ is calculated.
-
-\item Is checked whether $\mathcal{G}(\mathbf{R}_R)$ is positive definite.
-
-    \begin{itemize}
-    \item If $G(\mathbf{R}_R)$ is positive definite, then:
-       \begin{itemize}
-        \item The positive definite transformation of $\hspace{0.06cm}\mathbf{S}_R\hspace{0.06cm}$ is obtained as $\hspace{0.06cm}\mathbf{T}\cdot \mathcal{G}( \mathbf{R}_R) \cdot \mathbf{ T}$ , where $\hspace{0.06cm}\mathbf{T}=diag\bigl(  \sigma_R(X_1),..., \sigma_R(X_p) \bigr).$
-        
-         \item The algorithm stops.
-         \end{itemize}
-    \item If $\mathcal{G}(\mathbf{R}_R)$ is not positive definite, then:
-         \begin{itemize}
-         \item $\mathbf{R}_R$ is updated: $ \mathbf{R}_R \leftarrow \mathcal{G}(\mathbf{R}_R)$
-        
-         \item Returns to the initial step of the algorithm.
-        \end{itemize}
-     \end{itemize}
-\end{itemize}
- 
-\textbf{Remark:}
-
-Although in this work we have presented the transformation and the Delvin algorithm linked to the context at hand, both can be applied to any matrix, with the objective of obtaining positive definite matrices.
-
-}
---->
 
 ---
 <!-- header: 'k-medoids algorithm
@@ -630,32 +413,6 @@ $\\[1.5cm]$
 
 ---
 
-<!---
-$\\[1.6cm]$
-
-#### Simulation 5
-- *n=600k, k=3, outlier contamination.* 
-<div style="display: flex; align-items: flex-start; padding-left: 35px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/kmedoids_simulation_5_comparison.jpg" alt="Simulation 3" width="750" style="margin-right: 5px;" />
-    <div style="font-size: 16px; line-height: 1.6; margin-right: 25px;">
-      <p><strong>Predictive Performance:</strong></p>
-      <ul>
-          <li>Fast <i>k</i>-medoids is the algorithm with the best performance.</li>
-          <li>All of our proposed clustering algorithms are better than all the other tested clustering methods, except MiniBatch <i>k</i>-means, which is the fourth best algorithm.</li>
-          <li>The difference between the accuracy of our best method (0.93) and the best of the others (0.916) is tiny, but with respect to the second (0.65) is much more significant.</li>
-      </ul>
-      <p><strong>Computational Performance:</strong></p>
-      <ul>
-          <li>The computationally most expensive method is one of our proposals and takes 238 seconds.</li>
-          <li>But the top five of our method take between 40 and 63 seconds.</li>
-          <li>There are algorithms that are directly not feasible.</li>
-          <li>Our proposed algorithms are, in general, more expensive than the other feasible methods tested.</li>
-      </ul>
-    </div>
-</div>
-
---->
-
 $\\[1.8cm]$
 
 #### Simulation 6
@@ -741,7 +498,7 @@ $\\[3.5cm]$
 ---
 <!-- header: 'Developed Python packages' -->
 
-  These Master's thesis has led to the development of the following Python packages.
+  This Master's thesis has led to the development of the following Python packages.
 
 
   - **PyDistances**: a package for computing classic statistical distances as well as the  new proposals, 
@@ -868,3 +625,211 @@ More extensive tutorials about the packages can be found here:
 <!-- header: 'Thank you for your attention' -->
 
 $$\LARGE\textbf{Thank's for your attention!}$$
+
+---
+<!-- header: 'Appendix: robustification (Gnanadesikan (1997))' -->
+
+## Robust variance estimation
+
+Let $X_j$ be a variable of quantitative type.
+
+### Median absolute deviation 
+
+Following this proposal, a robust estimation of the variance of ${X}_j$ is defined as:
+ 
+$$\sigma^{ 2}_R(X_j)   =   MAD(X_j)^{ 2} \hspace{0.05cm } =   Me  \Bigl[   \Bigl(   \left|   x_{ij} - Me(X_j )   \right|   :   i = 1,...,n   \Bigr)   \Bigr] ^{ 2}$$
+
+
+
+### Trimmed variance 
+
+
+The $\alpha$-trimmed version of variable $X_j$ is defined as:
+
+$$X_j^{ \alpha}  =  \Bigl(  x_{ij}  \hspace{0.1cm}\mathbf{: }\hspace{0.1cm}  i\in \lbrace 1,\dots,n \rbrace   ,  \hspace{0.1cm } x_{ij} \in \big[  Q(\alpha/2, X_j)  ,  \hspace{0.1cm } Q(1-\alpha/2 , X_j)\big]   \Bigr)$$
+
+where:
+
+$Q(z, X_j)$ is the quantile $z\in [0,1]$ of $X_j$, that is, the value such that the proportion of values of $X_j$ that are below it is $z$.
+
+---
+
+Following this proposal, a robust estimation of the variance of  $X_j$ is defined as:
+
+$$\sigma^{ 2}_R(X_j) = \sigma^{2}(X_j^\alpha) = \dfrac{1}{n} \sum _{i=1}^n   \Bigl(   x_{ij} - \overline{X_j^\alpha} \Bigr)^2$$
+
+where $\overline{X_j^\alpha} = \dfrac{1}{n}\, \sum _{i\in \mathcal{I}(X_j^\alpha)} x_{ij}$ and $\mathcal{I}(X_j^\alpha)= \Bigl\{ i \in \lbrace 1,\dots , n \rbrace  \hspace{0.1cm } :\hspace{0.1cm } x_{ij} \in X_j^\alpha   \Bigr\}$ the set of indices of the observations of $X_j^\alpha$ .
+
+*Remark:*
+
+$\alpha$ is a parameter that modulates the number of observations of the original variable that will be trimmed for the calculation of the robust variance. $\alpha \in [0,1]$ and the larger it is, the more observations of the original variable will be trimmed.
+
+---
+
+### Winsorized variance 
+
+ 
+The $\alpha$-winsorized version of the variable $X_j$ is defined as:
+
+$$X_j^{\alpha}  =  \Bigl(  h(x)  \hspace{0.1cm }\mathbf{:} \hspace{0.1cm } x \in X_j   \Bigr)$$
+    
+where function $h$ is defined as follows:
+$$
+h(x)   =   \begin{cases}
+      a(\alpha )  , \hspace{0.1cm }\text{if } \hspace{0.1cm }x \in A(\alpha), \\
+      b(\alpha )  , \hspace{0.1cm }\text{if}\hspace{0.1cm } x \in B(\alpha), \\
+      x  , \hspace{0.1cm }\text{if } \hspace{0.1cm } x \in X_j   \hspace{0.1cm }\text{but}\hspace{0.1cm }   x \notin A(\alpha)   \hspace{0.1cm }\text{nor}\hspace{0.1cm }   B(\alpha), \end{cases}
+$$
+
+where $a(\alpha)$ is the value of $X_j$ that is immediately greater than $Q(\alpha/2,X_j)$, $b(\alpha)$ is the value of $X_j$ that is immediately less than $Q(1-\alpha/2, X_j )$ and the sets $A(\alpha)  =  \bigl\{   x_{ij}  :  x_{ij }  \leq  Q(\alpha/2  ,  X_j)   \bigr\}$, $B(\alpha)  =  \lbrace   x_{ij}  :  x_{ij}  \geq   Q(1-\alpha/2  ,  X_j)   \bigr\}$.
+
+
+Following this proposal, a robust estimation of the variance of $X_j$ is defined as:
+  $$\sigma^{ 2}_R(X_j)   =   \sigma^{ 2}(X_j^{\alpha} )   =   \dfrac{1}{n} \cdot \sum _{i=1}^n   \Bigl(   x_{ ij} - \overline{X_j^{\alpha}}   \Bigr)^2$$
+
+where $\overline{X_j^\alpha} = \frac{1}{n}\cdot \sum _{i\in \mathcal{I}(X_j^\alpha)} x_{ij}$ and $\mathcal{I}(X_j^\alpha)= \Bigl\{ i \in \lbrace 1,\dots , n \rbrace :  x_{ij} \in X_j^\alpha   \Bigr\}$ is the set of indices of the observations of $X_j^\alpha$
+
+---
+
+*Remark:*
+
+$\alpha$ is the parameter that modulates the winsorization volume. $\alpha \in [0,1]$ and the larger it is, the more observations will be winsorized, since more observations will be included in $A(\alpha)$ and $B(\alpha)$, and will be set as $a (\alpha)$ or $b(\alpha)$, respectively, that is, they will be winsorized.
+
+---
+
+### Robust correlation estimation
+
+Let $X_j$ and $X_k$ be variables of quantitative type, and let $Z_j$ be the auxiliary variable defined as $Z_j = \dfrac{X_j}{ \sqrt{\sigma^2_R(X_j)} }$. 
+
+Then, a robust estimation of Pearson's correlation between $X_k$ and $X_j$ is defined as:
+
+$$
+r_{kj}^{ R} = \dfrac{ \sigma^{ 2}_1 - \sigma^{ 2}_2 }{\sigma_1^{ 2} + \sigma_2^{ 2}}
+$$
+
+where $\sigma_1^{ 2} = \sigma^{ 2}_R(Z_k+Z_j)$ and $\sigma_2^{ 2} = \sigma^{ 2}_R(Z_k+Z_j)$.
+
+
+### Robust covariance estimation 
+
+Using the above formula and the relationship between Pearson's correlation and covariance, we have a robust estimation for the covariance between $X_j$ and $X_k$:
+
+$$
+  s_{kj}^{ R}  =  r_{kj}^{ R} \, \sqrt{  \sigma_R^{ 2}(X_j) \, \sigma_R^{ 2}(X_k)  }
+$$
+
+---
+
+### Robust estimation of the correlation matrix 
+
+A robust estimation of the correlation matrix of $\mathbf{X}$ is:
+
+$$\mathbf{R}_R  =  \Bigl(r_{kj}^{ R}   \Bigr)_{k,j = 1,\dots ,p}$$
+
+where $r_{kj}^{ R}$ is a robust estimation of Pearson's correlation between $X_k$ and $X_j$.
+
+
+
+### Robust estimation of the covariance matrix 
+
+A robust estimation of the covariance matrix of $\mathbf{X}$ is:
+
+$$\mathbf{S}_R = \Bigl(s_{kj}^{ R} \Bigr)_{k,j = 1,\dots ,p}$$
+
+where $s_{kj}^{ R}$ is a robust estimation of the covariance between ${X}_k\hspace{0.03cm}$ and ${X}_j$.
+
+---
+
+$$\\$$
+
+### Inverse of the robust estimation of the covariance matrix 
+
+To calculate the robust Mahalanobis distance it is necessary to calculate the inverse of $\mathbf{S}_R$.
+
+- If $\mathbf{S}_R$ is positive definite, then its inverse can be calculated.
+
+- If $\mathbf{S}_R$ is positive semidefinite, then it has no inverse, but its Moore-Penrose pseudo-inverse could be calculated.
+
+- If $\mathbf{S}_R$ is positive non-semidefinite, then it can be invertible (if it has no null eigenvalues) or non-invertible (if it has null eigenvalues). But even in the first case, even though it had an inverse, when using it with the Mahalanobis distance negative or even imaginary distances could be obtained, which would not make sense. Therefore, this is the most problematic case.
+
+
+
+*Remarks:*
+
+1. The condition for a matrix to be invertible is that its determinant is different from zero, and since the determinant of a matrix can be decomposed into the product of its eigenvalues, then, a matrix is invertible if and only if all its eigenvalues are different from zero.
+
+2. That $\mathbf{R}_R$ is positive definite means that $\mathbf{S}_R$ is also positive.
+
+
+---
+
+#### Delvin transformation to obtain $\mathbf{S}_R$ positive definite 
+
+As seen in the previous section, it is important that $\mathbf{S}_R$ is positive definite in order to calculate its inverse and not encounter problems in calculating the Mahalanobis distance.
+
+Delvin (1975) proposed a transformation such that, when $\mathbf{S}_R$ is not positive definite, a transformed version is obtained that is positive definite or at least closer to being positive definite.
+
+The proposed transformation $\mathcal{G}$ of $\mathbf{R}_R$ is as follows:
+
+$$\mathcal{G}(\mathbf{R}_R) = \Bigl[   g   \bigl( \hspace{0.05 cm} r_{kj}^{ R} \hspace{0.05 cm} \bigr)   \Bigr]_{k,j=1,\dots ,p}$$
+
+
+where:
+
+$$
+g \bigl( \hspace{0.05 cm} r_{kj}^{ R} \hspace{0.05 cm} \bigr)   =   \begin{cases}
+     0  ,  \text{ if }  \left|   r_{kj}^R   \right|  \leq  z(\epsilon), \\
+    z^{-1}\left(  z( r_{kj}^{ R} )  +  \epsilon \right)  ,  \text{ if }  r_{ kj}^{ R}  <  -z(\epsilon), \\
+    z^{-1}\left(  z( r_{kj}^{ R} )  -  \epsilon \right)  ,  \text{ if }  r_{ kj}^{ R}   >   z(\epsilon), \end{cases}
+$$
+
+where $\epsilon$ is a small positive number, for example, $\epsilon=0.05$, $z (x) = \arctan{h (x)} = \frac{1}{2}\,\log\left(\frac{1+x}{1-x}\right)$, $z^{-1} (x)  =  \tan{h(x)}$, 
+and $z(\epsilon)= z(0.05) \approx 0.05$.
+
+---
+
+#### How does the $g$ transformation work?
+
+- If $\hspace{0.05 cm}r_{kj}>0.05\hspace{0.05 cm}$, then, $\hspace{0.03 cm} g(r_{kj}) \hspace{0.05 cm}=\hspace{ 0.05 cm} r_{kj} - \varepsilon\hspace{0.05 cm}$, with $\hspace{0.05 cm}\varepsilon >0\hspace{0.05 cm}$ small. That is, $\hspace{0.05 cm}g\hspace{0.03 cm}$ transforms $\hspace{0.05 cm}r_{kj}\hspace{0.05 cm}$ into a slightly lower correlation.
+
+
+- If $\hspace{0.05 cm}r_{kj}<-0.05\hspace{0.05 cm}$, then, $\hspace{0.03 cm}g(r_{jk})\hspace{0.05 cm} =\hspace {0.05 cm} r_{jk} + \varepsilon\hspace{0.03 cm}$, with $\hspace{0.03 cm}\varepsilon >0\hspace{0.03 cm}$ small. That is, $\hspace{0.03 cm}g\hspace{0.03 cm}$ transforms $\hspace{0.05 cm}r_{kj}\hspace{0.05 cm}$ into a slightly higher correlation.
+
+- If $\hspace{0.05 cm}r_{kj} \in \left[-0.05,   0.05 \right]\hspace{0.05 cm}$, then, $g(r_{kj}) \hspace{0.05 cm}=\hspace{0.05 cm}0$. That is, $\hspace{0.03 cm}g\hspace{0.03 cm}$ transforms $\hspace{0.05 cm}r_{kj}\hspace{0.05 cm}$ into zero.
+
+---
+
+$\\$
+
+### Delvin algorithm to obtain positive definite $\mathbf{S}_R$
+
+The following algorithm uses the Delvin transformation to, given the matrix $\mathbf{S}_R$, in the case that it is not positive definite, obtain a transformation that is positive definite, and therefore invertible, and that therefore can be used without problems for the calculation of the robust Mahalanobis distance.
+
+- $\mathcal{G}(\mathbf{R}_R)$ is calculated.
+
+- Is checked whether $\mathcal{G}(\mathbf{R}_R)$ is positive definite.
+
+    - If $G(\mathbf{R}_R)$ is positive definite, then:
+        - The positive definite transformation of $\hspace{0.06cm}\mathbf{S}_R\hspace{0.06cm}$ is obtained as $\hspace{0.06cm}\mathbf{T}\cdot \mathcal{G}( \mathbf{R}_R) \cdot \mathbf{ T}$ , where $\hspace{0.06cm}\mathbf{T}=diag\bigl(  \sigma_R(X_1),..., \sigma_R(X_p) \bigr).$
+        
+         - The algorithm stops.
+
+    - If $\mathcal{G}(\mathbf{R}_R)$ is not positive definite, then:
+        
+         - $\mathbf{R}_R$ is updated: $\mathbf{R}_R \leftarrow \mathcal{G}(\mathbf{R}_R)$
+
+      - Returns to the initial step of the algorithm.
+
+---
+<!-- header: 'Appendix: supervised clustering' -->
+
+<div style="display: flex; align-items: flex-start; padding-left: 55px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/clustering_supervised_diagram.jpg" alt="Simulation 3" width="900" style="margin-left: 120px;" />
+</div>
+
+---
+
+<div style="display: flex; align-items: flex-start; padding-left: 55px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/supervised_clustering_ilustration.jpg" alt="Simulation 3" width="900" style="margin-left: 120px;" />
+</div>
+
