@@ -823,13 +823,16 @@ The following algorithm uses the Delvin transformation to, given the matrix $\ma
 ---
 <!-- header: 'Appendix: supervised clustering' -->
 
-<div style="display: flex; align-items: flex-start; padding-left: 55px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/clustering_supervised_diagram.jpg" alt="Simulation 3" width="900" style="margin-left: 120px;" />
+$\\[4cm]$
+<div style="display: flex; align-items: flex-start; padding-left: 245px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/clustering_supervised_diagram.jpg" alt="Simulation 3" width="500" style="margin-left: 120px;" />
 </div>
 
 ---
 
-<div style="display: flex; align-items: flex-start; padding-left: 55px;">
-    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/supervised_clustering_ilustration.jpg" alt="Simulation 3" width="900" style="margin-left: 120px;" />
+$\\[4cm]$
+
+<div style="display: flex; align-items: flex-start; padding-left: 155px;">
+    <img src="https://raw.githubusercontent.com/FabioScielzoOrtiz/TFM-Presentation/main/assets/supervised_clustering_ilustration.jpg" alt="Simulation 3" width="650" style="margin-left: 120px;" />
 </div>
 
